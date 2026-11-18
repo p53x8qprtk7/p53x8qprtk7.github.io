@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>飞魔幻小说排行榜-玄幻奇幻长篇热度榜与书单</title>
+<meta name="description" content="飞魔幻小说排行榜梳理玄幻奇幻长篇的连载热度、完本口碑与编辑推荐，收录龙渊纪、观星司、九霄锻骨录等作品，附榜单口径、阅读顺序与避坑清单，方便按题材挑选下一本。">
+<meta name="keywords" content="飞魔幻小说排行榜">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b2a4a'/%3E%3Cpath d='M14 44c8-22 24-28 36-22-8 4-12 10-13 16 6-2 11-1 13 3-9 2-15 6-18 12-4-6-10-9-18-9z' fill='%23e8b64c'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#16203a;
+  --ink-2:#3c4868;
+  --ink-3:#6a7694;
+  --paper:#f6f3ec;
+  --paper-2:#fffdf8;
+  --line:#dcd5c6;
+  --line-2:#eae4d6;
+  --brand:#1b2a4a;
+  --brand-2:#2c4373;
+  --accent:#b8862c;
+  --accent-2:#e8b64c;
+  --jade:#2f6d5c;
+  --rose:#8c3b46;
+  --radius:10px;
+  --radius-s:6px;
+  --shadow-1:0 1px 2px rgba(22,32,58,.06),0 6px 18px rgba(22,32,58,.06);
+  --shadow-2:0 2px 6px rgba(22,32,58,.08),0 14px 34px rgba(22,32,58,.10);
+  --gap:clamp(16px,2.2vw,26px);
+  --maxw:1180px;
+  --font: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",sans-serif;
+  --serif: "Songti SC","Noto Serif SC","Source Han Serif SC",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:112px}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--font);font-size:16px;line-height:1.82;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
+  outline:3px solid var(--accent);outline-offset:2px;border-radius:4px;
+}
+h1,h2,h3,h4{margin:0;line-height:1.32;font-weight:700}
+p{margin:0 0 .85em}
+ul,ol{margin:0 0 .9em;padding-left:1.25em}
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{left:12px;top:12px;z-index:200;background:#fff;padding:8px 14px;border-radius:6px}
+
+/* ---------- 吸顶区 ---------- */
+.sticky-wrap{position:sticky;top:0;z-index:80}
+.notice{
+  background:var(--brand);color:#f3ede0;font-size:13.5px;line-height:1.6;
+  border-bottom:1px solid rgba(232,182,76,.28);
+}
+.notice-in{
+  max-width:var(--maxw);margin:0 auto;padding:7px 18px;
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+}
+.notice b{color:var(--accent-2);font-weight:700;letter-spacing:.04em}
+.notice .ok{color:#a9d6c5}
+.notice a{color:#f3ede0;text-decoration:underline;text-underline-offset:3px}
+.site-header{
+  background:rgba(246,243,236,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.header-in{
+  max-width:var(--maxw);margin:0 auto;padding:10px 18px;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand svg{width:38px;height:38px;flex:none}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand-name{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:.02em;color:var(--brand)}
+.brand-sub{font-size:11.5px;color:var(--ink-3);letter-spacing:.14em}
+.nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.nav a{padding:7px 11px;border-radius:999px;font-size:14.5px;color:var(--ink-2)}
+.nav a:hover{background:var(--line-2);text-decoration:none;color:var(--brand)}
+.nav a.is-active{background:var(--brand);color:#fff}
+.header-tools{display:flex;align-items:center;gap:8px}
+.search{display:flex;align-items:center;border:1px solid var(--line);background:var(--paper-2);border-radius:999px;overflow:hidden}
+.search input{
+  border:0;background:transparent;padding:8px 12px;font:inherit;font-size:14px;width:150px;color:var(--ink)
+}
+.search button{
+  border:0;background:var(--brand);color:#fff;font:inherit;font-size:13.5px;
+  padding:8px 14px;cursor:pointer;
+}
+.menu-btn{
+  display:none;align-items:center;gap:6px;border:1px solid var(--line);
+  background:var(--paper-2);color:var(--brand);font:inherit;font-size:14px;
+  padding:8px 13px;border-radius:999px;cursor:pointer;
+}
+.search-msg{
+  max-width:var(--maxw);margin:0 auto;padding:0 18px 8px;font-size:13.5px;color:var(--rose);
+}
+.search-msg[hidden]{display:none}
+
+/* ---------- 首屏 ---------- */
+main{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+.hero{
+  margin:var(--gap) 0 var(--gap);
+  background:linear-gradient(160deg,#1b2a4a 0%,#233a66 58%,#1b2a4a 100%);
+  color:#f4efe4;border-radius:var(--radius);overflow:hidden;position:relative;
+  box-shadow:var(--shadow-2);
+}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(18px,3vw,40px);padding:clamp(22px,4vw,48px);align-items:center;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.18em;
+  color:var(--accent-2);border:1px solid rgba(232,182,76,.45);
+  padding:4px 12px;border-radius:999px;margin-bottom:16px;
+}
+.hero h1{
+  font-family:var(--serif);font-size:clamp(27px,4vw,42px);letter-spacing:.02em;
+  color:#fff;margin-bottom:14px;
+}
+.hero h1 em{font-style:normal;color:var(--accent-2)}
+.hero-lead{color:#d6d9e2;font-size:15.5px;max-width:46ch;margin-bottom:20px}
+.hero-lead strong{color:#fff;font-weight:600}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:999px;
+  font-size:14.5px;font-weight:600;transition:transform .18s ease;
+}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-primary{background:var(--accent-2);color:#22180a}
+.btn-ghost{border:1px solid rgba(244,239,228,.45);color:#f4efe4}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;
+  border-top:1px solid rgba(244,239,228,.18);padding-top:16px;max-width:430px;
+}
+.hero-stats div{font-size:12.5px;color:#bcc3d4;line-height:1.5}
+.hero-stats b{display:block;font-size:20px;color:var(--accent-2);font-family:var(--serif);letter-spacing:.02em}
+.hero-art{position:relative;min-height:220px}
+.hero-art svg{width:100%;height:auto}
+.hero-art figcaption{
+  position:absolute;right:0;bottom:-6px;font-size:11.5px;color:#aeb6c9;letter-spacing:.06em;
+}
+
+/* ---------- 通用板块 ---------- */
+.section{margin:0 0 calc(var(--gap) * 1.25)}
+.panel{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(18px,2.6vw,28px);box-shadow:var(--shadow-1);
+}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.sec-head h2{
+  font-family:var(--serif);font-size:clamp(20px,2.4vw,25px);letter-spacing:.01em;
+}
+.sec-head .tag{
+  font-size:12.5px;color:var(--brand-2);background:#eceff7;border:1px solid #d6ddef;
+  padding:2px 9px;border-radius:999px;white-space:nowrap;
+}
+.sec-note{font-size:13.5px;color:var(--ink-3);margin:2px 0 18px}
+.meta{font-size:12.5px;color:var(--ink-3)}
+.meta span+span::before{content:"·";margin:0 6px;color:var(--line)}
+hr.rule{border:0;border-top:1px dashed var(--line);margin:18px 0}
+
+/* 双栏 */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 306px;gap:var(--gap);align-items:start}
+.side-stack{display:flex;flex-direction:column;gap:var(--gap)}
+
+/* 概览 */
+.overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ov-card{border-left:3px solid var(--accent);padding:2px 0 2px 14px}
+.ov-card h3{font-size:15.5px;margin-bottom:4px}
+.ov-card p{font-size:14px;color:var(--ink-2);margin:0}
+
+/* 榜单表格 */
+.rank-table{width:100%;border-collapse:collapse;font-size:14px}
+.rank-table caption{text-align:left;font-size:13px;color:var(--ink-3);padding-bottom:10px}
+.rank-table th,.rank-table td{padding:11px 10px;border-bottom:1px solid var(--line-2);text-align:left;vertical-align:top}
+.rank-table thead th{font-size:12.5px;letter-spacing:.06em;color:var(--ink-3);font-weight:600;background:#f3efe5}
+.rank-table tbody tr:last-child td{border-bottom:0}
+.rank-no{font-family:var(--serif);font-size:17px;color:var(--accent);width:44px}
+.rank-title{font-weight:700;font-size:15px}
+.rank-title small{display:block;font-weight:400;font-size:12.5px;color:var(--ink-3);margin-top:2px}
+.badge{display:inline-block;font-size:12px;padding:1px 8px;border-radius:999px;border:1px solid;line-height:1.6}
+.b-hot{color:var(--rose);border-color:#e3c0c5;background:#fbf1f2}
+.b-done{color:var(--jade);border-color:#bcd8ce;background:#eff7f3}
+.b-new{color:var(--brand-2);border-color:#cdd7ec;background:#eef2fa}
+.b-rate{color:#8a6520;border-color:#e5d2a6;background:#fbf5e6}
+
+/* 精选卡片 */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:16px}
+.card{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-2)}
+.card img{width:100%;height:132px;object-fit:cover;background:#e8e3d6}
+.card-body{padding:13px 15px 15px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-body h3{font-size:15.5px;line-height:1.45}
+.card-body p{font-size:13.5px;color:var(--ink-2);margin:0;flex:1}
+.card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--ink-3);margin-top:4px}
+
+/* 紧凑列表 */
+.tight-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--line-2)}
+.tight-list li{
+  display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:12px;align-items:baseline;
+  padding:11px 2px;border-bottom:1px solid var(--line-2);font-size:14px;
+}
+.tight-list li time{color:var(--ink-3);font-size:12.5px;font-variant-numeric:tabular-nums}
+.tight-list li .item{color:var(--ink)}
+.tight-list li .item b{font-weight:600}
+.tight-list li .item small{color:var(--ink-3);display:block;font-size:12.5px;margin-top:1px}
+.tight-list li .chan{font-size:12.5px;color:var(--brand-2);white-space:nowrap}
+
+/* 分类索引 */
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);
+  background:#fbf8f0;border-radius:999px;padding:7px 14px;font-size:14px;color:var(--ink);
+}
+.chip:hover{border-color:var(--accent);text-decoration:none;background:#fdf6e4}
+.chip i{font-style:normal;font-size:12px;color:var(--ink-3)}
+
+/* 深度解析 */
+.deep{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(18px,2.6vw,30px);box-shadow:var(--shadow-1);
+}
+.deep h2{font-family:var(--serif);font-size:clamp(21px,2.5vw,26px);margin-bottom:6px}
+.deep h3{font-size:16.5px;margin:22px 0 8px;padding-left:11px;border-left:3px solid var(--accent);line-height:1.5}
+.deep p{font-size:15px}
+.deep ul{font-size:14.5px}
+.deep .pullquote{
+  margin:18px 0;padding:14px 18px;background:#f3efe5;border-left:4px solid var(--brand-2);
+  font-family:var(--serif);font-size:15.5px;color:var(--brand);
+}
+.verdict-table{width:100%;border-collapse:collapse;font-size:13.8px;margin:12px 0 6px}
+.verdict-table th,.verdict-table td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+.verdict-table thead th{background:#eef2fa;color:var(--brand);font-size:13px}
+.verdict-table td b{color:var(--brand)}
+
+/* 步骤 */
+.steps{counter-reset:st;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.steps li{
+  counter-increment:st;position:relative;padding:13px 15px 13px 54px;
+  background:#fbf8f0;border:1px solid var(--line-2);border-radius:var(--radius-s);font-size:14.2px;
+}
+.steps li::before{
+  content:counter(st,decimal-leading-zero);position:absolute;left:14px;top:13px;
+  font-family:var(--serif);font-size:16px;color:var(--accent);font-weight:700;
+}
+.steps li b{display:block;margin-bottom:2px;font-size:14.8px}
+
+/* 对照面板 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.compare-col{border:1px solid var(--line);border-radius:var(--radius-s);overflow:hidden}
+.compare-col h3{font-size:14.5px;padding:9px 14px;margin:0;color:#fff;background:var(--brand-2)}
+.compare-col:last-child h3{background:var(--jade)}
+.compare-col ul{list-style:none;padding:10px 14px;margin:0;font-size:13.8px}
+.compare-col li{padding:6px 0;border-bottom:1px dotted var(--line-2)}
+.compare-col li:last-child{border-bottom:0}
+.compare-col li b{color:var(--brand)}
+
+/* 时间线 */
+.timeline{list-style:none;margin:0;padding:0 0 0 20px;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 18px 18px;font-size:14.2px}
+.timeline li::before{
+  content:"";position:absolute;left:-27px;top:7px;width:11px;height:11px;border-radius:50%;
+  background:var(--paper-2);border:2px solid var(--accent);
+}
+.timeline li:last-child{padding-bottom:0}
+.timeline time{display:block;font-size:12.5px;color:var(--ink-3);letter-spacing:.02em}
+.timeline b{font-size:14.6px}
+
+/* FAQ */
+.faq details{border:1px solid var(--line);border-radius:var(--radius-s);background:#fbf8f0;margin-bottom:9px}
+.faq summary{
+  cursor:pointer;padding:12px 16px;font-size:14.7px;font-weight:600;color:var(--brand);
+  list-style:none;display:flex;justify-content:space-between;gap:12px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"＋";color:var(--accent);font-weight:400}
+.faq details[open] summary::after{content:"－"}
+.faq details[open] summary{border-bottom:1px solid var(--line-2)}
+.faq .ans{padding:11px 16px 14px;font-size:14px;color:var(--ink-2)}
+.faq .ans p:last-child{margin-bottom:0}
+
+/* 评论 */
+.comments{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
+.cmt{background:#fbf8f0;border:1px solid var(--line-2);border-radius:var(--radius-s);padding:13px 15px}
+.cmt-head{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.avatar{
+  width:30px;height:30px;border-radius:50%;background:var(--brand-2);color:#fff;
+  display:grid;place-items:center;font-size:13px;flex:none;font-family:var(--serif);
+}
+.cmt-head b{font-size:13.8px}
+.cmt-head span{font-size:12px;color:var(--ink-3)}
+.cmt p{font-size:13.8px;margin:0 0 6px;color:var(--ink-2)}
+.cmt .on{font-size:12.3px;color:var(--rose)}
+.cmt .on b{font-weight:600}
+
+/* 资讯 + 标签 */
+.news-list{list-style:none;padding:0;margin:0}
+.news-list li{padding:12px 0;border-bottom:1px solid var(--line-2);display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px}
+.news-list li:last-child{border-bottom:0}
+.news-list time{font-size:12.5px;color:var(--ink-3)}
+.news-list b{display:block;font-size:14.6px;margin-bottom:2px}
+.news-list p{font-size:13.6px;color:var(--ink-2);margin:0}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.tag-cloud a{
+  font-size:13.4px;padding:5px 11px;border-radius:var(--radius-s);
+  background:#eef2fa;color:var(--brand-2);border:1px solid #d6ddef;
+}
+.tag-cloud a:hover{background:var(--brand-2);color:#fff;text-decoration:none}
+
+/* 侧栏 */
+.side-card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow-1)}
+.side-card h2,.side-card h3{font-family:var(--serif);font-size:16.5px;margin-bottom:4px}
+.side-card .hint{font-size:12.5px;color:var(--ink-3);margin-bottom:10px}
+.side-nav{list-style:none;margin:0;padding:0;font-size:14px}
+.side-nav a{display:block;padding:6px 10px;border-radius:var(--radius-s);color:var(--ink-2);border-left:2px solid transparent}
+.side-nav a:hover{background:#f3efe5;text-decoration:none}
+.side-nav a.is-active{background:#eef2fa;color:var(--brand);border-left-color:var(--accent);font-weight:600}
+.mini-rank{list-style:none;margin:0;padding:0;font-size:13.6px}
+.mini-rank li{display:flex;gap:9px;padding:6px 0;border-bottom:1px dotted var(--line-2)}
+.mini-rank li:last-child{border-bottom:0}
+.mini-rank i{font-style:normal;color:var(--accent);font-family:var(--serif);width:18px;flex:none}
+.mini-rank a{color:var(--ink)}
+
+/* 页尾 */
+footer{background:var(--brand);color:#cfd5e2;margin-top:calc(var(--gap) * 1.6);font-size:13.8px}
+.footer-in{max-width:var(--maxw);margin:0 auto;padding:34px 18px 22px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px}
+footer h3{color:#fff;font-size:14.5px;margin-bottom:9px;letter-spacing:.04em}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{padding:3px 0}
+footer a{color:#cfd5e2}
+footer a:hover{color:var(--accent-2)}
+.footer-brand svg{width:34px;height:34px;margin-bottom:8px}
+.footer-brand p{max-width:34ch;font-size:13.2px;color:#aab2c4}
+.footer-note{
+  border-top:1px solid rgba(255,255,255,.14);max-width:var(--maxw);margin:0 auto;
+  padding:14px 18px 26px;font-size:12.5px;color:#9aa3b8;line-height:1.8;
+}
+.footer-note a{text-decoration:underline}
+#toTop{
+  position:fixed;right:16px;bottom:18px;z-index:90;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--line);background:var(--paper-2);color:var(--brand);font-size:17px;
+  cursor:pointer;box-shadow:var(--shadow-2);display:none;
+}
+#toTop.show{display:block}
+@media (max-width:960px){
+  .cols{grid-template-columns:1fr}
+  .side-stack{order:2}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{order:-1;min-height:0}
+  .overview-grid{grid-template-columns:1fr 1fr}
+  .footer-in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  .nav{display:none;width:100%;order:4;margin:0;flex-direction:column;gap:2px;
+       border-top:1px solid var(--line);padding-top:8px}
+  .nav.open{display:flex}
+  .nav a{padding:9px 10px}
+  .menu-btn{display:inline-flex;margin-left:auto}
+  .search input{width:104px}
+  .header-tools{flex-wrap:wrap}
+  .overview-grid{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .tight-list li{grid-template-columns:64px minmax(0,1fr);}
+  .tight-list li .chan{grid-column:2;justify-self:start}
+  .news-list li{grid-template-columns:1fr}
+  .footer-in{grid-template-columns:1fr;gap:18px}
+  html{scroll-padding-top:150px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .card:hover,.btn:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<div class="sticky-wrap">
+  <div class="notice">
+    <div class="notice-in">
+      <b>飞魔幻小说排行榜</b>
+      <span class="ok">11月8日 06:00 更新</span>
+      <span>本周新增《观星司》第七卷、《烬海孤舟》完本入榜；「星潮卷」热度口径调整为「近30日有效追读＋实体预售加权」。</span>
+      <a href="#latest">看更新明细</a>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="header-in">
+      <div class="brand">
+        <svg viewBox="0 0 64 64" role="img" aria-label="飞魔幻小说排行榜图形标志">
+          <rect x="1" y="1" width="62" height="62" rx="14" fill="#1b2a4a" stroke="#e8b64c" stroke-width="2"/>
+          <path d="M13 45c8-23 25-30 38-23-8 4-13 11-14 18 6-3 12-2 14 3-9 2-16 6-19 12-4-7-11-10-19-10z" fill="#e8b64c"/>
+          <circle cx="47" cy="17" r="3" fill="#f6f3ec"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">飞魔幻小说排行榜</span>
+          <span class="brand-sub">玄幻·奇幻长篇书单</span>
+        </span>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">菜单
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 3h12M1 7h12M1 11h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <nav class="nav" id="mainNav" aria-label="主题导航">
+        <a href="#rank" class="is-active">总榜</a>
+        <a href="#pick">编辑精选</a>
+        <a href="#channels">题材频道</a>
+        <a href="#deep">榜前解析</a>
+        <a href="#guide">入坑指南</a>
+        <a href="#faq">常见问题</a>
+      </nav>
+      <div class="header-tools">
+        <div class="search" role="search">
+          <label for="q" class="skip">搜索书名、作者或题材</label>
+          <input id="q" type="search" placeholder="搜书名 / 作者" autocomplete="off">
+          <button id="qBtn" type="button">查找</button>
+        </div>
+      </div>
+    </div>
+    <p class="search-msg" id="searchMsg" role="status" hidden></p>
+  </header>
+</div>
+
+<main id="main">
+  <!-- 首屏 -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">第 46 期 · 2026年11月第2周</p>
+        <h1 id="heroTitle">飞魔幻小说排行榜</h1>
+        <p class="hero-lead">
+          按连载热度、完本口碑与编辑推荐三档口径排列的玄幻奇幻长篇书单。本周覆盖 <strong>126 部在榜作品</strong>、38 位连载作者，标注 <strong>11 月 8 日 06:00</strong> 的追读与预售数据，读完一本两千章的长篇之前，先看清它值不值得跟。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#rank">查看总榜前 10</a>
+          <a class="btn btn-ghost" href="#guide">先读入坑指南</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>126</b>在榜作品</div>
+          <div><b>9</b>题材频道</div>
+          <div><b>3</b>榜单口径</div>
+        </div>
+      </div>
+      <figure class="hero-art" aria-label="原创插画：星盘与书脊组成的榜单构图">
+        <svg viewBox="0 0 420 300" role="img" aria-label="星盘、书脊与排行榜柱状图组合图形">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2c4373"/><stop offset="1" stop-color="#1b2a4a"/>
+            </linearGradient>
+          </defs>
+          <circle cx="150" cy="140" r="104" fill="none" stroke="#3c5a8f" stroke-width="1.4"/>
+          <circle cx="150" cy="140" r="78" fill="none" stroke="#4a689e" stroke-width="1.2" stroke-dasharray="3 6"/>
+          <circle cx="150" cy="140" r="52" fill="none" stroke="#5b79ae" stroke-width="1"/>
+          <path d="M150 36v208M46 140h208" stroke="#3c5a8f" stroke-width=".8" stroke-dasharray="2 8"/>
+          <g fill="#e8b64c">
+            <circle cx="150" cy="62" r="4"/><circle cx="228" cy="140" r="3"/>
+            <circle cx="150" cy="218" r="3.4"/><circle cx="72" cy="140" r="2.6"/>
+            <circle cx="205" cy="88" r="2.4"/><circle cx="96" cy="192" r="2.4"/>
+          </g>
+          <path d="M150 62 228 140 150 218 72 140Z" fill="none" stroke="#e8b64c" stroke-width="1.2" opacity=".7"/>
+          <g>
+            <rect x="290" y="176" width="26" height="60" rx="3" fill="url(#g1)" stroke="#5b79ae"/>
+            <rect x="326" y="140" width="26" height="96" rx="3" fill="url(#g1)" stroke="#e8b64c"/>
+            <rect x="362" y="196" width="26" height="40" rx="3" fill="url(#g1)" stroke="#5b79ae"/>
+          </g>
+          <path d="M282 248h116" stroke="#5b79ae" stroke-width="1.2"/>
+          <text x="290" y="128" fill="#e8b64c" font-size="11" font-family="serif">TOP 3</text>
+        </svg>
+        <figcaption>星盘取「卷」、柱形取「榜」，对应追读与完本两条线</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 概览 -->
+  <section class="section panel" id="overview" aria-labelledby="ovTitle">
+    <div class="sec-head">
+      <h2 id="ovTitle">玄幻奇幻长篇的三个阅读门类</h2>
+      <span class="tag">领域概览</span>
+    </div>
+    <p class="sec-note">同样挂在「飞魔幻」名下，连载节奏、篇幅与结局质量差别很大，先分清门类再挑书。</p>
+    <div class="overview-grid">
+      <div class="ov-card">
+        <h3>长篇连载 · 日更主力</h3>
+        <p>单章 2400—3200 字，日更或双更，主线靠「晋级—夺宝—破境」推进。在榜 74 部，平均已更 1180 章，追读读者最怕断更，所以「近30日更新频率」是这一档的硬指标。</p>
+      </div>
+      <div class="ov-card">
+        <h3>中篇完本 · 一口气读</h3>
+        <p>80—200 万字收束，卷末有明确结局。在榜 33 部，实体预售和有声改编多从这里出。《烬海孤舟》11月3日完结，全书 168 万字，是本周完本档口碑第一。</p>
+      </div>
+      <div class="ov-card">
+        <h3>短章实验 · 设定流</h3>
+        <p>单章 800—1500 字，重设定、轻打怪，更新不稳但讨论密度高。在榜 19 部，多见于「镜面卷」频道，适合夹在长篇之间换口味，不适合追更快节奏。</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cols">
+    <div>
+      <!-- 总榜 -->
+      <section class="section panel" id="rank" aria-labelledby="rankTitle">
+        <div class="sec-head">
+          <h2 id="rankTitle">11月8日总榜前十：追读、完本与预售加权</h2>
+          <span class="tag">榜单</span>
+        </div>
+        <p class="sec-note">口径：近30日有效追读 50% ＋ 完本口碑评分 30% ＋ 实体预售 20%。评分取站内 8.0 分以上样本，样本量低于 300 条的作品标注为「样本少」。</p>
+        <table class="rank-table">
+          <caption>数据截至 2026-11-08 06:00，含 10 月 9 日至 11 月 8 日新增条目</caption>
+          <thead>
+            <tr><th scope="col">名次</th><th scope="col">作品</th><th scope="col">状态</th><th scope="col">关键数据</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rank-no">01</td>
+              <td class="rank-title"><a href="#deep">龙渊纪</a><small>作者 沈砚舟 · 星潮卷</small></td>
+              <td><span class="badge b-hot">连载</span></td>
+              <td>第 9 卷《北渊断脉》更新至 2431 章，近30日追读 41.6 万，评分 9.2（样本 5620 条）</td>
+            </tr>
+            <tr>
+              <td class="rank-no">02</td>
+              <td class="rank-title"><a href="#channels">观星司</a><small>作者 陆迟白 · 镜面卷</small></td>
+              <td><span class="badge b-new">新卷</span></td>
+              <td>第七卷 11月6日开卷，首三日追读 27.3 万，较第六卷开卷增长 18%</td>
+            </tr>
+            <tr>
+              <td class="rank-no">03</td>
+              <td class="rank-title"><a href="#latest">烬海孤舟</a><small>作者 江照野 · 烬火卷</small></td>
+              <td><span class="badge b-done">完本</span></td>
+              <td>11月3日完结，全书 168 万字，完本评分 9.0（样本 3180 条），实体预售 2.1 万册</td>
+            </tr>
+            <tr>
+              <td class="rank-no">04</td>
+              <td class="rank-title"><a href="#pick">九霄锻骨录</a><small>作者 何砺 · 锻体卷</small></td>
+              <td><span class="badge b-hot">连载</span></td>
+              <td>第 17 卷《骨火重燃》，日更 2 章，近30日追读 33.8 万，评分 8.8</td>
+            </tr>
+            <tr>
+              <td class="rank-no">05</td>
+              <td class="rank-title"><a href="#channels">雾海灯官</a><small>作者 白鹿川 · 雾隐卷</small></td>
+              <td><span class="badge b-hot">连载</span></td>
+              <td>更新至 1622 章，10月29日起改为隔日更，追读回落 6.4%</td>
+            </tr>
+            <tr>
+              <td class="rank-no">06</td>
+              <td class="rank-title"><a href="#pick">赤诏·天工卷</a><small>作者 温九章 · 工造卷</small></td>
+              <td><span class="badge b-rate">样本少</span></td>
+              <td>新书第 1 卷，更新 146 章，评分 8.6，样本仅 214 条</td>
+            </tr>
+            <tr>
+              <td class="rank-no">07</td>
+              <td class="rank-title"><a href="#latest">剑阁夜巡人</a><small>作者 顾无咎 · 剑阁卷</small></td>
+              <td><span class="badge b-done">完本</span></td>
+              <td>10月19日完结，全书 92 万字，完本评分 8.7，有声改编预约 3.4 万</td>
+            </tr>
+            <tr>
+              <td class="rank-no">08</td>
+              <td class="rank-title"><a href="#channels">万骨书</a><small>作者 岑不识 · 星潮卷</small></td>
+              <td><span class="badge b-hot">连载</span></td>
+              <td>更新至 2874 章，主线回填「骨契」设定，追读 28.9 万</td>
+            </tr>
+            <tr>
+              <td class="rank-no">09</td>
+              <td class="rank-title"><a href="#pick">雪原牧灵人</a><small>作者 顾雪声 · 雾隐卷</small></td>
+              <td><span class="badge b-done">完本</span></td>
+              <td>10月12日完结，全书 121 万字，评论文本中「结局」提及率 61%</td>
+            </tr>
+            <tr>
+              <td class="rank-no">10</td>
+              <td class="rank-title"><a href="#latest">琉璃塔下</a><small>作者 苏折枝 · 镜面卷</small></td>
+              <td><span class="badge b-new">新卷</span></td>
+              <td>第三卷 11月2日开卷，首周追读 18.7 万，读者群 3 天内增 4200 人</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 精选 -->
+      <section class="section" id="pick" aria-labelledby="pickTitle">
+        <div class="sec-head">
+          <h2 id="pickTitle">编辑精选：五本值得先读三章的书</h2>
+          <span class="tag">精选推荐</span>
+        </div>
+        <p class="sec-note">挑标准不看总榜名次，看「前三章是否交代清楚主角的能力边界」。每本附一条具体劝退理由。</p>
+        <div class="card-grid">
+          <article class="card">
+            <img src="https://picsum.photos/seed/dragonabyss/480/280" width="480" height="280" loading="lazy" alt="深蓝色雾中的断裂山脊，对应《龙渊纪》北渊断脉卷的场景">
+            <div class="card-body">
+              <h3>龙渊纪·北渊断脉</h3>
+              <p>第 2380 章起把「龙脉」从道具改成契约对象，主角每次借用都要付出听觉代价。设定变化发生在 9月28日更新的第 2402 章，前后文可对照。</p>
+              <div class="card-foot"><span class="meta">沈砚舟</span><span>评分 9.2</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/starcourt/480/280" width="480" height="280" loading="lazy" alt="夜空下的圆形观星台，石阶上摆着铜制浑仪">
+            <div class="card-body">
+              <h3>观星司·第七卷</h3>
+              <p>把星象预言写成可驳回的分支任务，主角在 11月6日的开卷章里第一次拒绝预言，代价是撤销已获得的官职。</p>
+              <div class="card-foot"><span class="meta">陆迟白</span><span>追读 27.3 万</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/emberboat/480/280" width="480" height="280" loading="lazy" alt="灰烬色的海面上一叶孤舟，远处有燃烧的残塔">
+            <div class="card-body">
+              <h3>烬海孤舟</h3>
+              <p>168 万字完结，最后一卷用 11 章收掉三条支线。适合想一次读完的人，但前十章节奏偏慢，等不到第 12 章容易弃。</p>
+              <div class="card-foot"><span class="meta">江照野</span><span>完本 9.0</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/boneforge/480/280" width="480" height="280" loading="lazy" alt="铁匠炉前堆叠的白色骨材与烧红的铁条">
+            <div class="card-body">
+              <h3>九霄锻骨录·卷十七</h3>
+              <p>锻体流里少见的把「疼」写成量化数据的作品：每重锻骨消耗三日恢复期，作者在第 1902 章附了完整表格。</p>
+              <div class="card-foot"><span class="meta">何砺</span><span>日更 2 章</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/lanternfog/480/280" width="480" height="280" loading="lazy" alt="浓雾中排列的纸灯笼，水面上有倒影">
+            <div class="card-body">
+              <h3>雾海灯官</h3>
+              <p>10月29日改隔日更后追读掉 6.4%，但同月新增「灯契条目表」，把此前散落的 23 种灯官职权一次讲清，适合设定党。</p>
+              <div class="card-foot"><span class="meta">白鹿川</span><span>1622 章</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 最新更新 -->
+      <section class="section panel" id="latest" aria-labelledby="latestTitle">
+        <div class="sec-head">
+          <h2 id="latestTitle">最新更新：10月9日至11月8日入榜与异动</h2>
+          <span class="tag">动态</span>
+        </div>
+        <p class="sec-note">只记影响榜单口径的事：开卷、完结、停更、卷末设定调整。章节更新不逐条罗列。</p>
+        <ul class="tight-list">
+          <li>
+            <time datetime="2026-11-08">11月8日</time>
+            <span class="item"><b>榜单口径调整</b><small>「实体预售」权重由 15% 提到 20%，完本档作品排名整体前移。</small></span>
+            <span class="chan">总榜</span>
+          </li>
+          <li>
+            <time datetime="2026-11-06">11月6日</time>
+            <span class="item"><b>《观星司》第七卷开卷</b><small>首三日追读 27.3 万，第六卷同期为 23.1 万。</small></span>
+            <span class="chan">镜面卷</span>
+          </li>
+          <li>
+            <time datetime="2026-11-03">11月3日</time>
+            <span class="item"><b>《烬海孤舟》完结</b><small>终章 1.4 万字，作者在同日公告里说明「三处支线未展开」。</small></span>
+            <span class="chan">烬火卷</span>
+          </li>
+          <li>
+            <time datetime="2026-11-02">11月2日</time>
+            <span class="item"><b>《琉璃塔下》第三卷开卷</b><small>新增「塔层规则」，读者群三日内增 4200 人。</small></span>
+            <span class="chan">镜面卷</span>
+          </li>
+          <li>
+            <time datetime="2026-10-29">10月29日</time>
+            <span class="item"><b>《雾海灯官》改隔日更</b><small>作者说明为补充「灯契条目表」，追读回落 6.4%。</small></span>
+            <span class="chan">雾隐卷</span>
+          </li>
+          <li>
+            <time datetime="2026-10-19">10月19日</time>
+            <span class="item"><b>《剑阁夜巡人》完结</b><small>全书 92 万字，有声改编预约 3.4 万。</small></span>
+            <span class="chan">剑阁卷</span>
+          </li>
+          <li>
+            <time datetime="2026-10-12">10月12日</time>
+            <span class="item"><b>《雪原牧灵人》完结</b><small>终卷评分从 8.4 回升至 8.7，集中于结局评价。</small></span>
+            <span class="chan">雾隐卷</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 分类入口 -->
+      <section class="section panel" id="channels" aria-labelledby="chTitle">
+        <div class="sec-head">
+          <h2 id="chTitle">九个题材频道：按设定密度和打怪比例分</h2>
+          <span class="tag">分类</span>
+        </div>
+        <p class="sec-note">括号内为在榜部数与单章均长，字数是挑书时最直接的筛选条件。</p>
+        <div class="chips">
+          <a class="chip" href="#rank">星潮卷 <i>28 部 · 单章 2.8k</i></a>
+          <a class="chip" href="#rank">镜面卷 <i>19 部 · 单章 1.6k</i></a>
+          <a class="chip" href="#rank">剑阁卷 <i>17 部 · 单章 2.5k</i></a>
+          <a class="chip" href="#rank">锻体卷 <i>14 部 · 单章 3.0k</i></a>
+          <a class="chip" href="#rank">烬火卷 <i>13 部 · 单章 2.2k</i></a>
+          <a class="chip" href="#rank">雾隐卷 <i>12 部 · 单章 2.4k</i></a>
+          <a class="chip" href="#rank">工造卷 <i>9 部 · 单章 2.7k</i></a>
+          <a class="chip" href="#rank">符箓卷 <i>8 部 · 单章 2.1k</i></a>
+          <a class="chip" href="#rank">渊兽卷 <i>6 部 · 单章 3.2k</i></a>
+        </div>
+        <hr class="rule">
+        <p style="font-size:14px;color:var(--ink-2);margin:0">
+          「星潮卷」是体量最大的一档，也是断更率最高的一档：28 部里有 5 部近30日更新不足 6 次。「镜面卷」相反，19 部里 14 部保持周更 4 次以上，适合不想等更的读者从这一档切入。
+        </p>
+      </section>
+
+      <!-- 深度解析 -->
+      <section class="section deep" id="deep" aria-labelledby="deepTitle">
+        <div class="sec-head">
+          <h2 id="deepTitle">榜前解析：追读高的书，完本口碑未必高</h2>
+          <span class="tag">唯一主体阅读区</span>
+        </div>
+        <p class="sec-note">这一节只做一件事：把「追读数据」和「完本口碑」拆开看，并给出可核对的判断依据。</p>
+
+        <p>把 10 月 9 日到 11 月 8 日的榜单数据横着比一遍，会发现一个不太舒服的事实：追读 30 万以上的 11 部作品里，只有 3 部同时进入完本口碑前 20。这不是偶然。《龙渊纪》近30日追读 41.6 万，评分 9.2；《烬海孤舟》完本评分 9.0，但它在完结前的追读只有 19.4 万，连前五都没进。两个指标测的根本不是同一件事。</p>
+
+        <h3>一、追读测的是「断点设计」，不是「故事好坏」</h3>
+        <p>连载作品的追读由读者每天是否点开决定，而点开与否受单章结尾影响极大。《九霄锻骨录》卷十七第 1902 章把锻骨消耗写成三日恢复期，章末直接抛出「第四日骨火反噬」的钩子，当天追读涨 1.8 万；同一周它的评分只动了 0.1。反过来，《万骨书》在 10月26日连更三章把「骨契」设定摊开讲清，追读反而掉了 2.3 万——信息给全了，悬念就没了。追读曲线更像节奏表的读数。</p>
+        <div class="pullquote">可反驳的判断：把追读排名当成「这本更好看」的证据，在长篇连载里通常会错，因为它奖励的是悬念密度，不是完成度。</div>
+
+        <h3>二、完本评分里有「沉没成本」偏差，规模可估</h3>
+        <p>完本评价由读到结局的读者打出，读完 120 万字的人本来就更可能给高分。《雪原牧灵人》连载期评分 8.4，10月12日完结后升到 8.7，涨的 0.3 分里，评论高频词从「节奏慢」变成了「收束干净」。样本量也有干扰：评分样本低于 300 条的作品（如《赤诏·天工卷》214 条）波动极大，一天内可摆动 0.2 分，不宜与 5620 条样本的《龙渊纪》直接排序。</p>
+        <table class="verdict-table">
+          <caption style="text-align:left;font-size:12.5px;color:var(--ink-3);padding-bottom:8px">判断拆解：三个可核对的结构</caption>
+          <thead><tr><th scope="col">判断</th><th scope="col">核对依据</th><th scope="col">可能被推翻的方式</th></tr></thead>
+          <tbody>
+            <tr><td>追读不等于质量</td><td>11 部追读 30 万＋作品中仅 3 部进完本口碑前 20</td><td>若放宽到追读 15 万，重合数升到 9 部，结论减弱</td></tr>
+            <tr><td>完结后评分上浮 0.2—0.4</td><td>《雪原牧灵人》8.4→8.7；《剑阁夜巡人》8.5→8.7</td><td>样本低于 300 条时上浮不稳定，可能反转</td></tr>
+            <tr><td>改更频伤追读</td><td>《雾海灯官》10月29日改隔日更，追读 −6.4%</td><td>同期新增设定表，若读者留存反升则归因有误</td></tr>
+          </tbody>
+        </table>
+
+        <h3>三、「新卷开卷」的 18% 涨幅，来自老读者回流而非新读者</h3>
+        <p>《观星司》第七卷 11月6日开卷，首三日追读 27.3 万，比第六卷开卷的 23.1 万高 18%。作者陆迟白在开卷公告里写的是「本卷不再复用第六卷的官职体系」，这对应一个可查的动作：第六卷 8 月中旬起连续 11 章写官场调度，评论区出现集中的「想看星象」诉求。新卷把预言线拉回主位，回流的是中途搁置的老读者，这从读者群三日内新增仅 900 人可以看出——涨幅在存量里，不在增量里。</p>
+
+        <h3>四、给挑书人的三个数字门槛</h3>
+        <ul>
+          <li><b>单章字数 2500 字以下 + 日更</b>：作者周转压力大，《万骨书》2874 章仍保持日更，属于少见个案，别当常态。</li>
+          <li><b>评分样本 300 条以上</b>：低于此数的排名变化更多是噪声，参考价值有限。</li>
+          <li><b>近30日更新 6 次以上</b>：低于 6 次可视为「慢更」，榜单里 5 部星潮卷作品落在这一档，追更前最好先确认。</li>
+        </ul>
+        <p>以上三条不解决「好不好看」，只解决「要不要现在开始读」。真要判断故事好坏，回到前三章看主角的能力边界有没有写清，比看任何名次都准。</p>
+      </section>
+
+      <!-- 入坑指南 -->
+      <section class="section panel" id="guide" aria-labelledby="guideTitle">
+        <div class="sec-head">
+          <h2 id="guideTitle">入坑指南：从哪一章开始、在哪一章停</h2>
+          <span class="tag">体验指南</span>
+        </div>
+        <p class="sec-note">长篇最大的成本是时间。下面这套流程按「先试三章、再定跟读」设计，四步走完大约 90 分钟。</p>
+        <ol class="steps">
+          <li><b>先读卷末设定页，不读第一章</b>星潮卷与剑阁卷的卷末常附「境界/职位表」，《龙渊纪》第九卷的契约代价表就在第 2431 章末尾，读完能判断设定是否自洽。</li>
+          <li><b>挑一个卷的中段开读</b>开卷章往往在铺陈。以《观星司》为例，第七卷从第 12 章（11月6日更新）开始进入分支任务，比开卷章更能看出叙事水平。</li>
+          <li><b>查近30日更新频率</b>低于 6 次的慢更作品，先收藏后补，避免读到高潮处等一个月。《雾海灯官》目前隔日更，适合周末集中读。</li>
+          <li><b>完本档从评论区找「结局」关键词</b>《雪原牧灵人》61% 的评论提到结局，说明读者最在意收束；这类评论比评分更接近阅读体验。</li>
+        </ol>
+        <hr class="rule">
+        <div class="compare">
+          <div class="compare-col">
+            <h3>适合先读连载</h3>
+            <ul>
+              <li><b>每天有 30 分钟</b>：日更书能跟上讨论节奏</li>
+              <li><b>喜欢猜设定</b>：镜面卷、星潮卷的读者群会整理条目表</li>
+              <li><b>不介意等更</b>：慢更作品的设定密度通常更高</li>
+            </ul>
+          </div>
+          <div class="compare-col">
+            <h3>适合直接读完结</h3>
+            <ul>
+              <li><b>想一次读完</b>：《烬海孤舟》168 万字，约 56 小时</li>
+              <li><b>怕弃坑</b>：完本评分已过滤掉中途崩盘的书</li>
+              <li><b>在意结局质量</b>：先看评论里「结局」提及率是否过半</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section panel faq" id="faq" aria-labelledby="faqTitle">
+        <div class="sec-head">
+          <h2 id="faqTitle">常见问题：榜单口径与选书细节</h2>
+          <span class="tag">问答</span>
+        </div>
+        <details>
+          <summary>「星潮卷」这个词具体指什么题材？</summary>
+          <div class="ans"><p>星潮卷指以星象、潮汐、命盘为力量来源的一类玄幻长篇，核心设定通常包含「星位对应能力」。在榜 28 部，代表作为《龙渊纪》《万骨书》。它与剑阁卷的区别在于，前者的战斗靠预判与借势，后者靠招式与兵器。</p></div>
+        </details>
+        <details>
+          <summary>追读数和评分哪个更该信？</summary>
+          <div class="ans"><p>追读数反映连载期的节奏设计，评分反映读完全书者的整体评价。想判断「现在要不要追」，看追读与近30日更新频率；想判断「值不值得读完」，看完本评分和评论里对结局的提及率。两个数字都低于中位数时，一般不必急着开始。</p></div>
+        </details>
+        <details>
+          <summary>《龙渊纪》第九卷的「契约代价」设定改过几次？</summary>
+          <div class="ans"><p>可核对的改动有两次。9月28日第 2402 章把代价从「失明」改为「听觉衰减」，10月15日第 2418 章补充了代价可累积的规则。两次调整都在卷末设定页有留档，旧版描述仍可在章节评论区找到转述。</p></div>
+        </details>
+        <details>
+          <summary>完本的书为什么还会出现在总榜里？</summary>
+          <div class="ans"><p>总榜口径包含「实体预售」与「完本口碑」两项，完本作品在这两项上有优势。但完本档作品的追读数据会随时间下降，所以它们在榜单上通常停留两到三周后自然退出，不代表热度仍在连载期水平。</p></div>
+        </details>
+        <details>
+          <summary>隔日更的作品是不是质量更好？</summary>
+          <div class="ans"><p>没有必然联系。《雾海灯官》改隔日更后补了 23 种灯官职权表，设定密度上升，但追读掉了 6.4%。更新频率降低可能换来更完整的设定，也可能只是作者周转困难，需要看同期的卷末说明和新增内容来判断。</p></div>
+        </details>
+        <details>
+          <summary>样本量少的书能不能进榜单？</summary>
+          <div class="ans"><p>可以进，但会标注「样本少」。《赤诏·天工卷》评分 8.6，样本 214 条，排名第 6 更多靠预售和追读，评分参考价值有限。读到这类条目，建议再找两条以上具体评论交叉验证。</p></div>
+        </details>
+      </section>
+
+      <!-- 评论 -->
+      <section class="section panel" id="comments" aria-labelledby="cmTitle">
+        <div class="sec-head">
+          <h2 id="cmTitle">读者评论：五条带具体章节的反馈</h2>
+          <span class="tag">互动</span>
+        </div>
+        <p class="sec-note">选自 11月1日至11月7日的读者留言，保留原话中提到的章节号与卷名。</p>
+        <div class="comments">
+          <article class="cmt">
+            <div class="cmt-head"><span class="avatar">砚</span><div><b>砚边人</b> <span>11月7日</span></div></div>
+            <p>《龙渊纪》第 2402 章把代价换成听觉衰减，我反而更能接受了。之前失明的写法太常见，现在每次借力都要靠同伴复述战场，人物关系被迫变密。</p>
+            <span class="on">指向：<b>龙渊纪 第2402章</b></span>
+          </article>
+          <article class="cmt">
+            <div class="cmt-head"><span class="avatar">迟</span><div><b>迟到的灯</b> <span>11月6日</span></div></div>
+            <p>《观星司》第七卷开卷章有点闷，前 11 章都在交代官职撤销的后续。第 12 章才真正进任务，建议从那里读，不然容易以为换了作者。</p>
+            <span class="on">指向：<b>观星司 第七卷</b></span>
+          </article>
+          <article class="cmt">
+            <div class="cmt-head"><span class="avatar">烬</span><div><b>烬海读客</b> <span>11月4日</span></div></div>
+            <p>《烬海孤舟》终章 1.4 万字，三条支线只收了两条。作者公告说第三处「留给读者自己想」，我不太买账，但 168 万字整体收束确实干净，8.7 分我给得心服。</p>
+            <span class="on">指向：<b>烬海孤舟 终章</b></span>
+          </article>
+          <article class="cmt">
+            <div class="cmt-head"><span class="avatar">骨</span><div><b>骨火不熄</b> <span>11月5日</span></div></div>
+            <p>《九霄锻骨录》第 1902 章那张锻骨消耗表挺实用，可惜后面 30 章又回到打怪升级的老路，表格像临时加的。日更两章的代价可能就是设定不经推敲。</p>
+            <span class="on">指向：<b>九霄锻骨录 卷十七</b></span>
+          </article>
+          <article class="cmt">
+            <div class="cmt-head"><span class="avatar">雾</span><div><b>雾港闲人</b> <span>11月2日</span></div></div>
+            <p>《雾海灯官》改成隔日更我能忍，但追读掉 6.4% 是实打实的。灯契条目表补得不错，23 种职权一次讲清，比之前散在 200 多章里好查多了。</p>
+            <span class="on">指向：<b>雾海灯官 灯契条目表</b></span>
+          </article>
+        </div>
+      </section>
+
+      <!-- 资讯 -->
+      <section class="section panel" id="news" aria-labelledby="newsTitle">
+        <div class="sec-head">
+          <h2 id="newsTitle">相关资讯：完结、改编与平台动作</h2>
+          <span class="tag">资讯</span>
+        </div>
+        <ul class="news-list">
+          <li>
+            <time datetime="2026-11-07">11月7日</time>
+            <div><b>《剑阁夜巡人》有声改编定档 12 月</b><p>平台预约页显示 3.4 万人预约，配音阵容未公布。原著 92 万字，按每集 25 分钟估算约 60 集。</p></div>
+          </li>
+          <li>
+            <time datetime="2026-11-05">11月5日</time>
+            <div><b>星潮卷新增「慢更标注」</b><p>近30日更新不足 6 次的作品将在榜单条目前加标注，首批涉及 5 部，含《万骨书》之外的 4 部中长连载。</p></div>
+          </li>
+          <li>
+            <time datetime="2026-11-01">11月1日</time>
+            <div><b>《赤诏·天工卷》加更至日更</b><p>作者温九章在公告中说明为冲新书榜前五，11月1日起由隔日更改日更，样本量仍不足 300 条。</p></div>
+          </li>
+          <li>
+            <time datetime="2026-10-24">10月24日</time>
+            <div><b>镜面卷读者整理「塔层规则」共享表</b><p>围绕《琉璃塔下》第三卷，读者群发布 1.2 万字的规则整理，作者在评论区确认其中 7 条为原本设定。</p></div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 相关推荐 -->
+      <section class="section panel" id="rec" aria-labelledby="recTitle">
+        <div class="sec-head">
+          <h2 id="recTitle">相关推荐：按口味直接找</h2>
+          <span class="tag">标签索引</span>
+        </div>
+        <p class="sec-note">标签都指向具体条目或频道，不设泛化分类。</p>
+        <div class="tag-cloud">
+          <a href="#rank">龙渊纪 契约代价表</a>
+          <a href="#rank">观星司 分支预言</a>
+          <a href="#rank">烬海孤舟 完本结局</a>
+          <a href="#rank">九霄锻骨录 锻骨数据</a>
+          <a href="#rank">雾海灯官 灯契条目</a>
+          <a href="#rank">剑阁夜巡人 有声改编</a>
+          <a href="#channels">星潮卷 慢更清单</a>
+          <a href="#channels">镜面卷 周更稳定书单</a>
+          <a href="#channels">工造卷 新书试读</a>
+          <a href="#guide">长篇入坑四步法</a>
+          <a href="#deep">追读与完本口碑对照</a>
+          <a href="#faq">样本量门槛说明</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- 侧栏 -->
+    <aside class="side-stack" aria-label="侧栏导航与快榜">
+      <nav class="side-card" id="sideNav" aria-labelledby="sideNavTitle">
+        <h2 id="sideNavTitle">本页栏目</h2>
+        <p class="hint">滚动时高亮当前所在栏目</p>
+        <ul class="side-nav">
+          <li><a href="#overview">领域概览</a></li>
+          <li><a href="#rank" class="is-active">总榜前十</a></li>
+          <li><a href="#pick">编辑精选</a></li>
+          <li><a href="#latest">最新更新</a></li>
+          <li><a href="#channels">题材频道</a></li>
+          <li><a href="#deep">榜前解析</a></li>
+          <li><a href="#guide">入坑指南</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#comments">读者评论</a></li>
+          <li><a href="#news">相关资讯</a></li>
+          <li><a href="#rec">相关推荐</a></li>
+        </ul>
+      </nav>
+      <section class="side-card" aria-labelledby="miniTitle">
+        <h2 id="miniTitle">追读快榜</h2>
+        <p class="hint">仅按近30日追读排序，不含评分</p>
+        <ol class="mini-rank">
+          <li><i>1</i><a href="#deep">龙渊纪</a></li>
+          <li><i>2</i><a href="#rank">九霄锻骨录</a></li>
+          <li><i>3</i><a href="#rank">万骨书</a></li>
+          <li><i>4</i><a href="#rank">观星司</a></li>
+          <li><i>5</i><a href="#rank">雾海灯官</a></li>
+          <li><i>6</i><a href="#rank">琉璃塔下</a></li>
+        </ol>
+      </section>
+      <section class="side-card" aria-labelledby="critTitle">
+        <h2 id="critTitle">三条硬门槛</h2>
+        <ul style="list-style:none;padding:0;margin:0;font-size:13.8px">
+          <li style="padding:6px 0;border-bottom:1px dotted var(--line-2)">近30日更新 ≥ 6 次</li>
+          <li style="padding:6px 0;border-bottom:1px dotted var(--line-2)">评分样本 ≥ 300 条</li>
+          <li style="padding:6px 0">单章字数 ≥ 2500 字优先</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<button id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<footer>
+  <div class="footer-in">
+    <div class="footer-brand">
+      <svg viewBox="0 0 64 64" role="img" aria-label="页脚图形标志">
+        <rect x="1" y="1" width="62" height="62" rx="14" fill="#2c4373" stroke="#e8b64c" stroke-width="2"/>
+        <path d="M13 45c8-23 25-30 38-23-8 4-13 11-14 18 6-3 12-2 14 3-9 2-16 6-19 12-4-7-11-10-19-10z" fill="#e8b64c"/>
+      </svg>
+      <p><b style="color:#fff;font-size:15px;font-family:var(--serif)">飞魔幻小说排行榜</b><br>按追读、完本口碑与实体预售三档口径排列玄幻奇幻长篇，标注数据时点，让挑书先看清代价。</p>
+    </div>
+    <div>
+      <h3>榜单</h3>
+      <ul>
+        <li><a href="#rank">总榜前十</a></li>
+        <li><a href="#latest">最新更新</a></li>
+        <li><a href="#deep">榜前解析</a></li>
+        <li><a href="#rec">相关推荐</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>题材</h3>
+      <ul>
+        <li><a href="#channels">星潮卷</a></li>
+        <li><a href="#channels">镜面卷</a></li>
+        <li><a href="#channels">剑阁卷</a></li>
+        <li><a href="#channels">锻体卷</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>指南</h3>
+      <ul>
+        <li><a href="#guide">入坑四步法</a></li>
+        <li><a href="#faq">榜单口径问答</a></li>
+        <li><a href="#comments">读者评论</a></li>
+        <li><a href="#news">相关资讯</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-note">
+    <p>作品条目、作者名、章节号、追读与评分数据均为示例演示数据，非真实平台统计，请勿作消费依据。榜单口径与更新时间见公告条与总榜说明。</p>
+    <p>页脚更新时间：2026年11月8日，对应正文可核对项为「总榜口径调整」「观星司第七卷开卷」「烬海孤舟完结」三条。© 2026 飞魔幻小说排行榜 · 内容示例站点</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mainNav');
+  if(menuBtn && nav){
+    menuBtn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      if(e.target.tagName === 'A' && window.matchMedia('(max-width:720px)').matches){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  // 本地搜索
+  var q = document.getElementById('q'), qBtn = document.getElementById('qBtn'), msg = document.getElementById('searchMsg');
+  function runSearch(){
+    var kw = (q.value || '').trim();
+    if(!kw){ msg.hidden = true; return; }
+    var nodes = document.querySelectorAll('main h1, main h2, main h3, main b, main a, main p, main li');
+    var hit = null;
+    for(var i=0;i<nodes.length;i++){
+      if(nodes[i].textContent.indexOf(kw) !== -1){ hit = nodes[i]; break; }
+    }
+    msg.hidden = false;
+    if(hit){
+      var target = hit.closest('section, article, li') || hit;
+      if(!target.id){
+        target.id = 'find-' + Date.now();
+      }
+      msg.style.color = '#2f6d5c';
+      msg.textContent = '找到与「' + kw + '」相关的内容，正在定位。';
+      location.hash = '#' + target.id;
+    }else{
+      msg.style.color = '#8c3b46';
+      msg.textContent = '没有找到「' + kw + '」。可试试书名、作者名或题材词，例如：龙渊纪、观星司、星潮卷、完本。';
+    }
+  }
+  if(qBtn){ qBtn.addEventListener('click', runSearch); }
+  if(q){
+    q.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); runSearch(); } });
+    q.addEventListener('input', function(){ msg.hidden = true; });
+  }
+
+  // 滚动高亮
+  var links = Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  function highlight(){
+    var pos = window.scrollY + 160, cur = null;
+    secs.forEach(function(s){ if(s.offsetTop <= pos) cur = s; });
+    if(!cur && secs.length) cur = secs[0];
+    links.forEach(function(a){
+      a.classList.toggle('is-active', cur && a.getAttribute('href') === '#' + cur.id);
+    });
+    var topNavs = document.querySelectorAll('.nav a');
+    topNavs.forEach(function(a){
+      a.classList.toggle('is-active', cur && a.getAttribute('href') === '#' + cur.id);
+    });
+  }
+  window.addEventListener('scroll', highlight, {passive:true});
+  highlight();
+
+  // 回到顶部
+  var top = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 600){ top.classList.add('show'); } else { top.classList.remove('show'); }
+  }, {passive:true});
+  top.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "飞魔幻小说排行榜",
+  "alternateName": "玄幻奇幻长篇书单",
+  "description": "按追读、完本口碑与实体预售三档口径排列玄幻奇幻长篇，标注数据时点与样本量。",
+  "inLanguage": "zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "「星潮卷」这个词具体指什么题材？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "星潮卷指以星象、潮汐、命盘为力量来源的一类玄幻长篇，核心设定通常包含「星位对应能力」。在榜 28 部，代表作为《龙渊纪》《万骨书》。它与剑阁卷的区别在于，前者的战斗靠预判与借势，后者靠招式与兵器。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "追读数和评分哪个更该信？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "追读数反映连载期的节奏设计，评分反映读完全书者的整体评价。判断现在要不要追，看追读与近30日更新频率；判断值不值得读完，看完本评分和评论里对结局的提及率。两个数字都低于中位数时，一般不必急着开始。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "《龙渊纪》第九卷的「契约代价」设定改过几次？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可核对的改动有两次。9月28日第 2402 章把代价从「失明」改为「听觉衰减」，10月15日第 2418 章补充了代价可累积的规则。两次调整都在卷末设定页有留档。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "完本的书为什么还会出现在总榜里？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "总榜口径包含实体预售与完本口碑两项，完本作品在这两项上有优势。但完本档作品的追读数据会随时间下降，所以它们通常停留两到三周后自然退出，不代表热度仍在连载期水平。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "隔日更的作品是不是质量更好？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "没有必然联系。《雾海灯官》改隔日更后补了 23 种灯官职权表，设定密度上升，但追读掉了 6.4%。更新频率降低可能换来更完整的设定，也可能只是作者周转困难，需要看同期卷末说明和新增内容判断。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "样本量少的书能不能进榜单？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以进，但会标注「样本少」。《赤诏·天工卷》评分 8.6，样本 214 条，排名第 6 更多靠预售和追读，评分参考价值有限。读到这类条目，建议再找两条以上具体评论交叉验证。"
+      }
+    }
+  ]
+}
+</script>
+</body>
+  </html>
