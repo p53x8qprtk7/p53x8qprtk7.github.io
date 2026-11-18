@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>蚂蚁bt联盟-磁力资源索引与下载工具实测</title>
+<meta name="description" content="蚂蚁bt联盟是磁力链接与BT种子资源索引的整理站，按月归档影视、软件、学习资料等种子条目，提供DHT节点状态、下载器兼容性对照和资源校验方法，帮助用户判断种子健康度与版权风险。">
+<meta name="keywords" content="蚂蚁bt联盟">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d3b2f'/%3E%3Cpath d='M18 42V22l9 12 7-12 8 20' stroke='%23f2c14e' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='46' cy='20' r='4' fill='%23f2c14e'/%3E%3C/svg%3E">
+<style>
+:root{
+  --green:#1d3b2f;
+  --green-2:#2c5a46;
+  --green-3:#e6efe9;
+  --gold:#c8912a;
+  --gold-2:#f2c14e;
+  --ink:#1b1f1d;
+  --ink-2:#41524a;
+  --ink-3:#6b7d74;
+  --line:#d6e0da;
+  --bg:#f7f9f7;
+  --card:#ffffff;
+  --radius:10px;
+  --radius-sm:6px;
+  --shadow:0 1px 2px rgba(27,31,29,.06),0 6px 18px rgba(27,31,29,.06);
+  --shadow-sm:0 1px 2px rgba(27,31,29,.08);
+  --fs-h1:clamp(1.7rem,3.4vw,2.6rem);
+  --fs-h2:clamp(1.25rem,2vw,1.55rem);
+  --fs-h3:1.05rem;
+  --fs-body:1rem;
+  --fs-sm:.875rem;
+  --fs-xs:.78rem;
+  --sp:clamp(16px,2.4vw,28px);
+  --ann-h:38px;
+  --head-h:64px;
+  --maxw:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  font-size:var(--fs-body);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--green-2);text-decoration:none}
+a:hover{color:var(--gold)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+h1,h2,h3{line-height:1.3;color:var(--green);margin:0}
+p{margin:0 0 .9em}
+ul,ol{margin:0 0 .9em;padding-left:1.3em}
+li{margin-bottom:.35em}
+section{scroll-margin-top:calc(var(--ann-h) + var(--head-h) + 12px)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--sp)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* 公告条 */
+.ann{
+  position:sticky;top:0;z-index:60;
+  height:var(--ann-h);
+  background:linear-gradient(90deg,var(--green) 0%,var(--green-2) 100%);
+  color:#eef4f0;font-size:var(--fs-sm);
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.ann .wrap{display:flex;align-items:center;gap:10px;width:100%;overflow:hidden}
+.ann-tag{flex:0 0 auto;background:var(--gold-2);color:#2a2410;font-weight:700;padding:1px 8px;border-radius:4px;font-size:var(--fs-xs);letter-spacing:.5px}
+.ann-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ann-text b{color:var(--gold-2);font-weight:600}
+
+/* 页头 */
+.head{
+  position:sticky;top:var(--ann-h);z-index:55;
+  height:var(--head-h);
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.head .wrap{display:flex;align-items:center;gap:18px;height:100%}
+.brand{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.brand svg{width:32px;height:32px;flex:0 0 auto}
+.brand-name{font-weight:800;font-size:1.06rem;color:var(--green);letter-spacing:.3px;white-space:nowrap}
+.nav{display:flex;gap:2px;margin-left:6px;flex:1 1 auto;min-width:0;overflow:hidden}
+.nav a{
+  padding:6px 10px;border-radius:6px;color:var(--ink-2);font-size:var(--fs-sm);
+  white-space:nowrap;
+}
+.nav a:hover{background:var(--green-3);color:var(--green)}
+.head-tools{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.search-mini{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff}
+.search-mini input{border:0;padding:6px 9px;font-size:var(--fs-sm);width:118px;background:transparent;color:var(--ink);font-family:inherit}
+.search-mini input:focus{outline:none}
+.search-mini button{border:0;background:var(--green);color:#fff;padding:6px 10px;cursor:pointer;font-size:var(--fs-sm);font-family:inherit}
+.search-mini button:hover{background:var(--green-2)}
+.menu-btn{display:none;border:1px solid var(--line);background:#fff;border-radius:6px;padding:7px 10px;cursor:pointer;color:var(--green);font-size:var(--fs-sm);font-family:inherit;align-items:center;gap:6px}
+.menu-btn svg{width:16px;height:16px}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 320px at 88% -10%,rgba(242,193,78,.30),transparent 62%),
+    radial-gradient(700px 300px at 5% 110%,rgba(44,90,70,.16),transparent 60%),
+    linear-gradient(160deg,#0f241c 0%,#1d3b2f 58%,#26543f 100%);
+  color:#e9f2ed;
+  padding:clamp(30px,5vw,58px) 0 clamp(28px,4vw,44px);
+}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(20px,3.5vw,46px);align-items:center;position:relative;z-index:2}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-xs);letter-spacing:2px;color:var(--gold-2);border:1px solid rgba(242,193,78,.4);border-radius:999px;padding:3px 12px;margin-bottom:16px}
+.hero h1{font-size:var(--fs-h1);color:#fff;letter-spacing:.5px;margin-bottom:14px}
+.hero h1 em{font-style:normal;color:var(--gold-2)}
+.hero-desc{color:#c8d9d0;max-width:36em;font-size:1rem}
+.hero-desc b{color:#fff;font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 4px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:8px;font-weight:600;font-size:var(--fs-sm);border:1px solid transparent;transition:transform .18s ease,background .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold-2);color:#2a2410}
+.btn-gold:hover{background:#ffd268;color:#2a2410}
+.btn-ghost{border-color:rgba(233,242,237,.4);color:#e9f2ed}
+.btn-ghost:hover{background:rgba(255,255,255,.09);color:#fff}
+.hero-stats{display:flex;flex-wrap:wrap;gap:clamp(14px,3vw,30px);margin-top:22px;padding-top:18px;border-top:1px dashed rgba(233,242,237,.22)}
+.hero-stats div{min-width:96px}
+.hero-stats strong{display:block;font-size:1.32rem;color:var(--gold-2);font-weight:800;font-variant-numeric:tabular-nums}
+.hero-stats span{font-size:var(--fs-xs);color:#a9c2b6;letter-spacing:.6px}
+.hero-art{position:relative;aspect-ratio:1/.86;max-width:430px;justify-self:end;width:100%}
+.hero-art svg{width:100%;height:100%;display:block}
+
+/* 通用板块 */
+.block{padding:clamp(30px,4vw,50px) 0;border-bottom:1px solid var(--line)}
+.block:last-of-type{border-bottom:0}
+.block-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:20px}
+.block-head h2{font-size:var(--fs-h2)}
+.block-head p{color:var(--ink-3);font-size:var(--fs-sm);margin:4px 0 0;max-width:44em}
+.eyebrow{font-size:var(--fs-xs);letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:6px;display:block}
+.more-link{font-size:var(--fs-sm);font-weight:600;color:var(--green-2);border-bottom:1px solid var(--gold-2);padding-bottom:1px}
+
+/* 领域概览 */
+.overview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.ov-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 14px;box-shadow:var(--shadow-sm)}
+.ov-card h3{font-size:var(--fs-h3);margin-bottom:6px}
+.ov-card p{font-size:var(--fs-sm);color:var(--ink-2);margin:0 0 8px}
+.ov-card .num{font-size:1.5rem;font-weight:800;color:var(--green);font-variant-numeric:tabular-nums;line-height:1.1}
+.ov-card .unit{font-size:var(--fs-xs);color:var(--ink-3);display:block;margin-top:2px}
+
+/* 精选 */
+.pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pick-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .2s ease}
+.pick-card:hover{transform:translateY(-3px)}
+.pick-card figure{position:relative;margin:0;aspect-ratio:16/9;overflow:hidden;background:var(--green-3)}
+.pick-card img{width:100%;height:100%;object-fit:cover}
+.pick-card .badge{position:absolute;left:10px;top:10px;background:rgba(15,36,28,.85);color:var(--gold-2);font-size:var(--fs-xs);padding:2px 8px;border-radius:4px;letter-spacing:.5px}
+.pick-body{padding:14px 15px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pick-body h3{font-size:var(--fs-h3)}
+.pick-body p{font-size:var(--fs-sm);color:var(--ink-2);margin:0}
+.pick-meta{margin-top:auto;padding-top:10px;display:flex;flex-wrap:wrap;gap:4px 10px;font-size:var(--fs-xs);color:var(--ink-3);border-top:1px dashed var(--line)}
+.pick-meta b{color:var(--green-2);font-weight:600}
+
+/* 更新列表 */
+.updates{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:24px}
+.update-list{list-style:none;padding:0;margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.update-list li{display:grid;grid-template-columns:76px 1fr auto;gap:12px;align-items:baseline;padding:11px 15px;border-bottom:1px solid var(--line);font-size:var(--fs-sm)}
+.update-list li:last-child{border-bottom:0}
+.update-list time{color:var(--ink-3);font-variant-numeric:tabular-nums;font-size:var(--fs-xs)}
+.update-list .ut{color:var(--ink)}
+.update-list .ut b{color:var(--green);font-weight:600}
+.update-list .tag{font-size:var(--fs-xs);border:1px solid var(--line);border-radius:4px;padding:0 6px;color:var(--ink-3);white-space:nowrap}
+.timeline-note{background:var(--green-3);border-radius:var(--radius);padding:16px 18px;border:1px solid #cfe0d6}
+.timeline-note h3{font-size:var(--fs-h3);margin-bottom:8px}
+.timeline-note ul{font-size:var(--fs-sm);color:var(--ink-2);padding-left:1.1em;margin-bottom:0}
+
+/* 分类索引 */
+.cats{display:flex;flex-wrap:wrap;gap:9px}
+.cat-chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:var(--fs-sm);color:var(--ink-2);transition:background .16s ease,border-color .16s ease}
+.cat-chip:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.cat-chip span{font-size:var(--fs-xs);color:var(--ink-3)}
+.cat-chip:hover span{color:#c8d9d0}
+
+/* 深度解析 */
+.deep{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:26px;align-items:start}
+.article-main{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,2.6vw,30px);box-shadow:var(--shadow-sm)}
+.article-main h3{font-size:var(--fs-h3);margin:22px 0 8px;padding-left:11px;border-left:3px solid var(--gold-2)}
+.article-main h3:first-child{margin-top:0}
+.article-main p{color:var(--ink-2);font-size:var(--fs-sm);line-height:1.85}
+.article-main p b{color:var(--ink)}
+.quote-card{background:linear-gradient(180deg,#fffdf6,#fdf6e4);border:1px solid #ecd9a6;border-radius:var(--radius-sm);padding:13px 15px;font-size:var(--fs-sm);color:#5a4a1c;margin:12px 0;position:relative}
+.quote-card::before{content:"“";position:absolute;left:6px;top:-6px;font-size:2.2rem;color:#dcc27e;font-family:Georgia,serif}
+.quote-card p{margin:0;color:#5a4a1c}
+.quote-card cite{display:block;margin-top:6px;font-style:normal;font-size:var(--fs-xs);color:#8a7440}
+.cmp-table{width:100%;border-collapse:collapse;font-size:var(--fs-sm);margin:10px 0 14px}
+.cmp-table caption{text-align:left;font-size:var(--fs-xs);color:var(--ink-3);padding-bottom:6px}
+.cmp-table th,.cmp-table td{border:1px solid var(--line);padding:7px 10px;text-align:left;color:var(--ink-2)}
+.cmp-table th{background:var(--green-3);color:var(--green);font-weight:600}
+.cmp-table td b{color:var(--green)}
+
+.article-side{position:sticky;top:calc(var(--ann-h) + var(--head-h) + 14px)}
+.side-nav{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow-sm)}
+.side-nav h3{font-size:var(--fs-sm);letter-spacing:1px;color:var(--ink-3);margin-bottom:8px;font-weight:700}
+.side-nav a{display:block;font-size:var(--fs-sm);padding:6px 9px;border-radius:5px;color:var(--ink-2);border-left:2px solid transparent}
+.side-nav a.active,.side-nav a:hover{background:var(--green-3);color:var(--green);border-left-color:var(--gold-2)}
+.side-fact{margin-top:12px;font-size:var(--fs-xs);color:var(--ink-3);line-height:1.7;border-top:1px dashed var(--line);padding-top:10px}
+
+/* 体验指南步骤 */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;counter-reset:step}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;position:relative;box-shadow:var(--shadow-sm)}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;right:12px;top:8px;font-size:1.6rem;font-weight:800;color:var(--green-3);font-variant-numeric:tabular-nums}
+.step h3{font-size:var(--fs-h3);margin-bottom:6px;position:relative}
+.step p{font-size:var(--fs-sm);color:var(--ink-2);margin:0}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:0;overflow:hidden}
+details summary{cursor:pointer;list-style:none;padding:13px 16px;font-weight:600;font-size:var(--fs-sm);color:var(--green);display:flex;justify-content:space-between;gap:10px;align-items:center}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font-size:1.15rem;color:var(--gold);font-weight:700;flex:0 0 auto;line-height:1}
+details[open] summary::after{content:"−"}
+details[open] summary{border-bottom:1px solid var(--line);background:var(--green-3)}
+details .faq-a{padding:12px 16px 14px;font-size:var(--fs-sm);color:var(--ink-2);margin:0;line-height:1.8}
+
+/* 评论 */
+.comments{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cmt{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.cmt-head{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--green-3);color:var(--green);display:grid;place-items:center;font-weight:700;font-size:var(--fs-sm);flex:0 0 auto}
+.cmt-head b{font-size:var(--fs-sm);color:var(--ink)}
+.cmt-head span{font-size:var(--fs-xs);color:var(--ink-3);margin-left:auto}
+.cmt p{font-size:var(--fs-sm);color:var(--ink-2);margin:0 0 8px}
+.cmt .to{font-size:var(--fs-xs);color:var(--gold);border-top:1px dashed var(--line);padding-top:7px;margin-top:auto}
+
+/* 资讯 */
+.news-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.news-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;display:grid;grid-template-columns:56px 1fr;gap:13px;box-shadow:var(--shadow-sm)}
+.news-date{background:var(--green-3);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--green);padding:6px 0;height:fit-content}
+.news-date b{font-size:1.15rem;line-height:1;font-variant-numeric:tabular-nums}
+.news-date span{font-size:var(--fs-xs);margin-top:3px}
+.news-item h3{font-size:var(--fs-sm);margin-bottom:4px;color:var(--green)}
+.news-item p{font-size:var(--fs-sm);color:var(--ink-2);margin:0}
+.news-item p em{font-style:normal;color:var(--gold);font-weight:600}
+
+/* 推荐标签 */
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.tag-cloud a{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:6px 12px;font-size:var(--fs-sm);color:var(--ink-2)}
+.tag-cloud a:hover{border-color:var(--green);color:var(--green);background:var(--green-3)}
+
+/* 榜单 */
+.rank{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+.rank-list{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.rank-list li{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:11px 14px;border-bottom:1px solid var(--line);font-size:var(--fs-sm)}
+.rank-list li:last-child{border-bottom:0}
+.rank-list .no{font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums;font-size:var(--fs-sm)}
+.rank-list .rt b{color:var(--green)}
+.rank-list .rt{color:var(--ink-2)}
+.rank-list .rv{font-size:var(--fs-xs);color:var(--ink-3);white-space:nowrap}
+.note-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+.note-box h3{font-size:var(--fs-h3);margin-bottom:8px}
+.note-box p{font-size:var(--fs-sm);color:var(--ink-2);margin-bottom:10px}
+.trust{display:flex;gap:8px;flex-wrap:wrap}
+.trust span{font-size:var(--fs-xs);border-radius:4px;padding:3px 9px;border:1px solid var(--line)}
+.t-high{background:#e6f4ea;color:#1d6b3a;border-color:#bfe3ca}
+.t-mid{background:#fdf6e4;color:#8a6a1c;border-color:#ecd9a6}
+.t-low{background:#f4eeed;color:#8a4a40;border-color:#e3d2ce}
+
+/* 页尾 */
+.foot{background:#0f241c;color:#b9cec3;padding:clamp(30px,4vw,48px) 0 22px;font-size:var(--fs-sm)}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:24px;padding-bottom:24px;border-bottom:1px solid rgba(185,206,195,.18)}
+.foot-brand{display:flex;align-items:center;gap:9px;color:#fff;font-weight:800;font-size:1.05rem;margin-bottom:10px}
+.foot-brand svg{width:30px;height:30px}
+.foot p{color:#96b3a4;margin:0 0 8px;line-height:1.8}
+.foot h3{color:#e9f2ed;font-size:var(--fs-sm);margin-bottom:10px;letter-spacing:1px}
+.foot ul{list-style:none;padding:0;margin:0}
+.foot li{margin-bottom:7px}
+.foot a{color:#a9c2b6}
+.foot a:hover{color:var(--gold-2)}
+.foot-bottom{padding-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:var(--fs-xs);color:#7f9c8d}
+.foot-bottom b{color:#c8d9d0;font-weight:500}
+.foot-data{font-size:var(--fs-xs);color:#7f9c8d;margin-top:6px}
+
+/* 回顶 */
+.to-top{position:fixed;right:18px;bottom:18px;z-index:50;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--green);box-shadow:var(--shadow);cursor:pointer;display:none;place-items:center;font-size:1.05rem}
+.to-top.show{display:grid}
+.to-top:hover{transform:translateY(-2px);color:var(--gold)}
+
+/* 搜索无结果 */
+.search-result{display:none;font-size:var(--fs-sm);color:var(--ink-2);background:#fff;border:1px dashed var(--gold);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:16px}
+.search-result.show{display:block}
+.search-result b{color:var(--green)}
+
+@media (max-width:1024px){
+  .nav{display:none}
+  .nav.open{display:flex;position:absolute;left:0;right:0;top:var(--head-h);background:#fff;flex-direction:column;padding:10px var(--sp) 16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow);gap:2px}
+  .nav.open a{padding:10px 12px}
+  .menu-btn{display:inline-flex}
+  .overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pick{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .deep{grid-template-columns:1fr}
+  .article-side{position:static}
+  .comments{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .updates{grid-template-columns:1fr}
+  .rank{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-art{justify-self:center;max-width:300px;margin-top:8px;order:2}
+  .hero-stats{gap:16px}
+  .search-mini{display:none}
+  .overview-grid,.pick,.comments,.steps,.news-grid,.faq{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr}
+  .update-list li{grid-template-columns:64px 1fr}
+  .update-list .tag{display:none}
+  .ann .wrap{gap:6px}
+  .ann-text{font-size:var(--fs-xs)}
+  .to-top{right:12px;bottom:12px}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="ann" role="region" aria-label="站内更新公告">
+  <div class="wrap">
+    <span class="ann-tag">更新</span>
+    <span class="ann-text">11月6日新增《沙丘：第二部》2160p HDR 种子校验值、qBittorrent 4.6.2 兼容说明；11月5日下架 <b>31</b> 条失效磁力，DHT 节点存活率回升至 <b>68%</b>。</span>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <a class="brand" href="/#top" aria-label="蚂蚁bt联盟首页">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1d3b2f"/>
+        <path d="M17 44V21l9.5 13L34 21l9 23" stroke="#f2c14e" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="47" cy="19" r="4.5" fill="#f2c14e"/>
+        <path d="M14 50h36" stroke="#4e8168" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-name">蚂蚁bt联盟</span>
+    </a>
+    <nav class="nav" id="mainNav" aria-label="主题导航">
+      <a href="/#overview">领域概览</a>
+      <a href="/#picks">本周精选</a>
+      <a href="/#updates">最新更新</a>
+      <a href="/#cats">分类索引</a>
+      <a href="/#deep">深度解析</a>
+      <a href="/#guide">体验指南</a>
+      <a href="/#faq">常见问答</a>
+      <a href="/#comments">用户评论</a>
+    </nav>
+    <div class="head-tools">
+      <form class="search-mini" id="searchForm" role="search">
+        <label class="sr-only" for="q">站内搜索</label>
+        <input id="q" name="q" type="search" placeholder="搜种子、演员、工具" autocomplete="off">
+        <button type="submit">搜索</button>
+      </form>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+        菜单
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <span class="hero-kicker">BT 资源索引 · 种子健康度观察</span>
+        <h1 id="heroTitle">蚂蚁bt联盟</h1>
+        <p class="hero-desc">按月归档影视剧、软件镜像、公开课与电子书的磁力与种子条目。每条记录附 <b>文件体积、做种人数、tracker 状态</b>，并标注抓取时间与校验方式。索引页只做整理，下载工具与带宽由你自己决定。</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="/#picks">查看本周精选种子</a>
+          <a class="btn btn-ghost" href="/#guide">先读下载器对照</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>4,218</strong><span>在档种子条目</span></div>
+          <div><strong>68%</strong><span>DHT 节点存活率</span></div>
+          <div><strong>11.06</strong><span>最近一次全量校验</span></div>
+          <div><strong>23</strong><span>收录频道数</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 360" role="presentation">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f2c14e" stop-opacity=".95"/>
+              <stop offset="1" stop-color="#c8912a" stop-opacity=".55"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3f7a5e"/>
+              <stop offset="1" stop-color="#1d3b2f"/>
+            </linearGradient>
+          </defs>
+          <circle cx="300" cy="92" r="76" fill="url(#g1)" opacity=".16"/>
+          <circle cx="300" cy="92" r="46" fill="url(#g1)" opacity=".24"/>
+          <g stroke="#f2c14e" stroke-width="2" stroke-linecap="round" opacity=".85">
+            <path d="M118 128 L162 128 L162 176 L206 176"/>
+            <path d="M206 176 L206 128 L250 128"/>
+            <path d="M206 176 L206 224 L250 224"/>
+            <path d="M118 224 L162 224 L162 176"/>
+            <path d="M206 224 L206 272 L250 272"/>
+          </g>
+          <g fill="#f2c14e">
+            <circle cx="118" cy="128" r="7"/>
+            <circle cx="118" cy="224" r="7"/>
+            <circle cx="250" cy="128" r="7"/>
+            <circle cx="250" cy="224" r="7"/>
+            <circle cx="250" cy="272" r="7"/>
+          </g>
+          <g fill="#e9f2ed">
+            <circle cx="162" cy="128" r="4"/>
+            <circle cx="162" cy="176" r="4"/>
+            <circle cx="162" cy="224" r="4"/>
+            <circle cx="206" cy="128" r="4"/>
+            <circle cx="206" cy="176" r="6"/>
+            <circle cx="206" cy="224" r="4"/>
+            <circle cx="206" cy="272" r="4"/>
+          </g>
+          <rect x="42" y="288" width="150" height="46" rx="9" fill="url(#g2)" stroke="#4e8168"/>
+          <text x="60" y="316" font-family="monospace" font-size="13" fill="#c8d9d0">magnet:?xt=urn</text>
+          <rect x="268" y="212" width="110" height="110" rx="12" fill="none" stroke="#4e8168" stroke-dasharray="5 6" opacity=".8"/>
+          <text x="288" y="254" font-family="monospace" font-size="12" fill="#a9c2b6">seeds</text>
+          <text x="288" y="278" font-family="monospace" font-size="20" fill="#f2c14e">128</text>
+          <text x="288" y="300" font-family="monospace" font-size="12" fill="#a9c2b6">peers 64</text>
+          <circle cx="352" cy="264" r="3" fill="#f2c14e"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 领域概览 -->
+  <section class="block" id="overview" aria-labelledby="ovTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Field Overview</span>
+          <h2 id="ovTitle">磁力索引与种子库的组成部分</h2>
+          <p>一个可用的种子索引由元数据、tracker、做种规模、校验规则四块构成，缺一项收藏价值就下降一个档。</p>
+        </div>
+        <a class="more-link" href="/#cats">进入分类索引</a>
+      </div>
+      <div class="overview-grid">
+        <article class="ov-card">
+          <h3>元数据文件</h3>
+          <p>.torrent 中的 announce 列表与 info 段，决定能否被 DHT 嗅探到。11 月批次中 91% 条目附完整 name 与 files 字段。</p>
+          <span class="num">3,841</span><span class="unit">条含完整文件树</span>
+        </article>
+        <article class="ov-card">
+          <h3>Tracler 与 DHT</h3>
+          <p>公共 tracker 单点失效频繁，本周移除 7 个长期无响应的 UDP tracker，改由 DHT + PEX 兜底。</p>
+          <span class="num">68%</span><span class="unit">节点存活率（11-06 采样）</span>
+        </article>
+        <article class="ov-card">
+          <h3>做种与下载比</h3>
+          <p>做种数低于 3 的条目单独标记，下载前可一眼看到是否属于“挂机才能下完”的类型。</p>
+          <span class="num">412</span><span class="unit">条低做种预警</span>
+        </article>
+        <article class="ov-card">
+          <h3>校验信息</h3>
+          <p>影视与大体积镜像优先附 SHA-1 前 16 位，和离线包比对，避免分卷损坏反复重下。</p>
+          <span class="num">27</span><span class="unit">条附校验值</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 精选推荐 -->
+  <section class="block" id="picks" aria-labelledby="pickTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Weekly Picks</span>
+          <h2 id="pickTitle">本周值得存的 6 条种子</h2>
+          <p>挑选标准：做种数 ≥ 8、文件结构清楚、发布日期在 11 月 1 日至 6 日之间。</p>
+        </div>
+        <a class="more-link" href="/#rank">查看下载榜</a>
+      </div>
+      <div class="pick">
+        <article class="pick-card">
+          <figure>
+            <img src="https://picsum.photos/seed/antbt-dune2/560/315" width="560" height="315" loading="lazy" alt="沙丘第二部 2160p HDR 蓝光压制的沙漠场景截图">
+            <span class="badge">影视 · 4K</span>
+          </figure>
+          <div class="pick-body">
+            <h3>沙丘：第二部 2160p HDR 内封字幕</h3>
+            <p>体积 22.4GB，含简体与繁体两条字幕轨，做种 37，11-06 12:10 入库，附 SHA-1 前 16 位校验。</p>
+            <div class="pick-meta"><b>37 做种</b><span>22.4 GB</span><span>11-06</span></div>
+          </div>
+        </article>
+        <article class="pick-card">
+          <figure>
+            <img src="https://picsum.photos/seed/antbt-ubuntu/560/315" width="560" height="315" loading="lazy" alt="Ubuntu 24.04 桌面版安装界面截图">
+            <span class="badge">软件 · 镜像</span>
+          </figure>
+          <div class="pick-body">
+            <h3>Ubuntu 24.04.1 LTS 桌面版 ISO 种子</h3>
+            <p>官方发布页同源，体积 5.9GB，tracker 为 canonical 官方节点，校验方式为 SHA-256 完整比对。</p>
+            <div class="pick-meta"><b>54 做种</b><span>5.9 GB</span><span>11-05</span></div>
+          </div>
+        </article>
+        <article class="pick-card">
+          <figure>
+            <img src="https://picsum.photos/seed/antbt-lecture/560/315" width="560" height="315" loading="lazy" alt="大学公开课录制画面，讲台与投影幕布">
+            <span class="badge">公开课</span>
+          </figure>
+          <div class="pick-body">
+            <h3>北大《操作系统》48 讲 720p 合集</h3>
+            <p>按周分卷共 12 个 torrent，单卷 1.2GB，做种集中在前三卷，后九卷需要耐心挂机。</p>
+            <div class="pick-meta"><b>12 做种</b><span>14.6 GB</span><span>11-03</span></div>
+          </div>
+        </article>
+        <article class="pick-card">
+          <figure>
+            <img src="https://picsum.photos/seed/antbt-book/560/315" width="560" height="315" loading="lazy" alt="扫描版电子书内页，中文排版书页">
+            <span class="badge">电子书</span>
+          </figure>
+          <div class="pick-body">
+            <h3>《计算机网络：自顶向下方法》第 8 版扫描</h3>
+            <p>PDF 双页扫描 1.1GB，文字层可搜索，做种 9，属于典型的长尾资源，冷门时段等待较久。</p>
+            <div class="pick-meta"><b>9 做种</b><span>1.1 GB</span><span>11-02</span></div>
+          </div>
+        </article>
+        <article class="pick-card">
+          <figure>
+            <img src="https://picsum.photos/seed/antbt-daemon/560/315" width="560" height="315" loading="lazy" alt="开源工具仓库界面与命令行终端截图">
+            <span class="badge">工具 · 源码</span>
+          </figure>
+          <div class="pick-body">
+            <h3>qBittorrent 4.6.2 Windows x64 安装包</h3>
+            <p>体积 34MB，附官网 SHA-256，适合替换掉带捆绑的第三方下载器，安装时注意取消统计选项。</p>
+            <div class="pick-meta"><b>63 做种</b><span>34 MB</span><span>11-04</span></div>
+          </div>
+        </article>
+        <article class="pick-card">
+          <figure>
+            <img src="https://picsum.photos/seed/antbt-doc/560/315" width="560" height="315" loading="lazy" alt="纪录片自然场景，山脉与云层航拍">
+            <span class="badge">纪录片</span>
+          </figure>
+          <div class="pick-body">
+            <h3>《地球脉动 III》1080p 全 8 集合集</h3>
+            <p>BBC 版本，1080p H.264，8 集合计 16.8GB，做种 21，分集文件命名规范，便于挑集下载。</p>
+            <div class="pick-meta"><b>21 做种</b><span>16.8 GB</span><span>11-01</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新更新 -->
+  <section class="block" id="updates" aria-labelledby="upTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Fresh Updates</span>
+          <h2 id="upTitle">最近三天的入库、下架与校验记录</h2>
+          <p>只记录有变动的事件，重复抓取不进列表。</p>
+        </div>
+        <a class="more-link" href="/#news">相关资讯</a>
+      </div>
+      <div class="updates">
+        <ul class="update-list">
+          <li><time datetime="2026-11-06">11-06</time><span class="ut"><b>《沙丘：第二部》</b>补录 HDR 版本，替换掉旧的非 HDR 条目</span><span class="tag">替换</span></li>
+          <li><time datetime="2026-11-06">11-06</time><span class="ut">移除 <b>3 个</b> 长期无响应的 UDP tracker，涉及 214 条记录</span><span class="tag">清理</span></li>
+          <li><time datetime="2026-11-05">11-05</time><span class="ut">Ubuntu 24.04.1 官方 ISO 校验通过，SHA-256 与发布页一致</span><span class="tag">校验</span></li>
+          <li><time datetime="2026-11-05">11-05</time><span class="ut">下架 <b>31 条</b> 失效磁力，其中 19 条来自 9 月批量导入</span><span class="tag">下架</span></li>
+          <li><time datetime="2026-11-04">11-04</time><span class="ut">新增 qBittorrent 4.6.2 安装包条目，附官网哈希值</span><span class="tag">新增</span></li>
+          <li><time datetime="2026-11-04">11-04</time><span class="ut">《北大操作系统课》第 7 卷恢复做种，由用户 <b>vince_edu</b> 补种</span><span class="tag">补种</span></li>
+          <li><time datetime="2026-11-03">11-03</time><span class="ut">公开发布页新增“低做种预警”标签，覆盖 <b>412 条</b> 记录</span><span class="tag">功能</span></li>
+        </ul>
+        <aside class="timeline-note" aria-label="时间节点说明">
+          <h3>三个时间点怎么理解</h3>
+          <ul>
+            <li><b>入库时间</b>：索引记录被抓取的时刻，不等于发行日。</li>
+            <li><b>校验时间</b>：哈希与官方源比对的时刻，越近越可靠。</li>
+            <li><b>补种时间</b>：用户回传做种状态的时刻，仅作参考。</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 分类入口 -->
+  <section class="block" id="cats" aria-labelledby="catTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Channels</span>
+          <h2 id="catTitle">按你真正会搜的词分类</h2>
+          <p>频道名来自站内搜索日志的高频词，括号内为在档条目数。</p>
+        </div>
+      </div>
+      <div class="cats">
+        <a class="cat-chip" href="/#picks">蓝光原盘 <span>486</span></a>
+        <a class="cat-chip" href="/#picks">4K HDR 影视 <span>372</span></a>
+        <a class="cat-chip" href="/#picks">美剧合集 <span>295</span></a>
+        <a class="cat-chip" href="/#picks">纪录片 <span>168</span></a>
+        <a class="cat-chip" href="/#guide">Linux 镜像 <span>132</span></a>
+        <a class="cat-chip" href="/#guide">Windows 原版 ISO <span>97</span></a>
+        <a class="cat-chip" href="/#picks">开源软件合集 <span>241</span></a>
+        <a class="cat-chip" href="/#picks">公开课录像 <span>154</span></a>
+        <a class="cat-chip" href="/#picks">电子书扫描版 <span>209</span></a>
+        <a class="cat-chip" href="/#picks">无损音乐 <span>188</span></a>
+        <a class="cat-chip" href="/#guide">qBittorrent 配置 <span>42</span></a>
+        <a class="cat-chip" href="/#deep">DHT 与 tracker <span>33</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 深度解析 -->
+  <section class="block" id="deep" aria-labelledby="deepTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Deep Dive</span>
+          <h2 id="deepTitle">做种人数不等于资源质量：一次 30 天的样本比对</h2>
+          <p>把 4,218 条记录按做种数分档，再核对失效与复种情况，得到的结论和直觉不太一样。</p>
+        </div>
+      </div>
+      <div class="deep">
+        <article class="article-main">
+          <h3>一、样本与方法：选 11 月 8 日前 30 天的 600 条记录</h3>
+          <p>样本抽取自 9 月 15 日至 10 月 15 日入库、且在 11 月 6 日仍能返回元数据的 600 条记录。按入库时做种数分为三档：低于 5、5 至 30、30 以上，各 200 条。跟踪项是 30 天后能否连接到至少 1 个完整种子。</p>
+          <p>结论先摆：做种数在 <b>5 至 30 这一档的存活率最高，为 74%</b>；低于 5 的为 21%；30 以上的为 63%。高做种条目反而更容易在 30 天后掉到只剩零星节点，主要原因是大体积影视在发布热度过去后，下载者删文件、停止做种。</p>
+          <table class="cmp-table">
+            <caption>三档做种规模的 30 天存活对比（样本各 200 条，统计日 2026-11-06）</caption>
+            <thead>
+              <tr><th scope="col">做种区间</th><th scope="col">30 天存活</th><th scope="col">平均补种次数</th><th scope="col">典型品类</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>低于 5</td><td><b>21%</b></td><td>0.3</td><td>冷门公开课、扫描书</td></tr>
+              <tr><td>5 至 30</td><td><b>74%</b></td><td>1.9</td><td>剧集单集、软件镜像</td></tr>
+              <tr><td>30 以上</td><td><b>63%</b></td><td>0.8</td><td>4K 影视、热门安装包</td></tr>
+            </tbody>
+          </table>
+
+          <h3>二、反例：一个 63 做种的条目在 26 天后归零</h3>
+          <p>10 月 8 日入库的《奥本海默》4K 重制版，入库时做种 63，文件 18.7GB。10 月 21 日做种掉到 11，10 月 31 日只剩 2 个节点，11 月 3 日归零。同一时期，一部只有 9 个做种的《切尔诺贝利》迷你剧 1080p，到 11 月 6 日仍有 7 个做种。</p>
+          <p>区别在文件体积与观众留存方式。18.7GB 的影视文件，多数人看完即删，留存动力弱；6.2GB 的剧集有反复观看和收藏需求，反而更稳。这条观察对判断“值不值得现在下载”有直接用处：<b>体积越大，越要在发布后两周内动手</b>。</p>
+
+          <div class="quote-card">
+            <p>“做种数只看入库那一刻的数字会误导人，我一般看 24 小时内的曲线，能撑过第二天的条目才值得排进队列。”</p>
+            <cite>—— qB 用户 hz_lin，2026-11-04 在站内讨论区留言</cite>
+          </div>
+
+          <h3>三、说法差异：tracker 回传和 DHT 嗅探给出的数字不同</h3>
+          <p>同一批 600 条记录里，有 117 条的 tracker 回传做种数与 DHT 嗅探结果相差 30% 以上。以 11 月 5 日采样的《地球脉动 III》为例，tracker 报 21 个做种，DHT 只看到 9 个真实可连节点。差异来源是 tracker 把“登记过但已离线”的客户端也算进名单。</p>
+          <p>这属于可核对的规则差异，不是谁在造假：tracker 回传的是注册数，DHT 看到的是响应数。判断资源热度时，DHT 数字更接近实际下载体验。站内显示的做种数目前以 tracker 为准，已在条目详情页补注 DHT 采样值。</p>
+
+          <h3>四、事实与推测分开：三件可以核对的事</h3>
+          <p>第一，<b>事实</b>：11 月 2 日至 6 日，站内失效磁力从 47 条增加到 78 条，其中 31 条为 11 月 5 日单日下架。第二，<b>回应</b>：维护者在 11 月 5 日的公告里说明下架由自动化脚本触发，判断依据是连续 72 小时无元数据响应。第三，<b>推测</b>：失效集中出现可能与 10 月底两家公共 tracker 停止服务有关，但现有数据不足以确认因果，需要等 11 月中旬的节点统计。</p>
+          <p>另一个可核对的结构是“入库时间—校验时间—当前做种”三者组合。凡是入库超过 20 天、未做校验、做种低于 5 的条目，站内统一标为低优先，共 94 条。这个分层不评价内容好坏，只描述可持续下载的概率。</p>
+
+          <h3>五、给判断一个可复现的检查清单</h3>
+          <p>把上面的结论压成四步：一看 DHT 响应数是否超过 5；二看文件体积与发布日期的间隔，超过两周的大文件谨慎；三看有没有校验值；四看 tracker 列表是否还在官方主页存活。四项里满足三项，下载成功率明显更高。这套方法对 1080p 以下的小文件适用性更强，对 4K 原盘只能算参考。</p>
+        </article>
+        <aside class="article-side">
+          <nav class="side-nav" aria-label="深度解析目录">
+            <h3>本区目录</h3>
+            <a href="/#deep">样本与方法</a>
+            <a href="/#deep">反例：63 做种归零</a>
+            <a href="/#deep">tracker 与 DHT 差异</a>
+            <a href="/#deep">事实与推测分层</a>
+            <a href="/#deep">可复现检查清单</a>
+            <div class="side-fact">样本量 600 条 · 统计日 2026-11-06 · 数据口径以 DHT 响应数为准</div>
+          </nav>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 体验指南 -->
+  <section class="block" id="guide" aria-labelledby="guideTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Hands-on Guide</span>
+          <h2 id="guideTitle">从磁力到本地文件：四步走完</h2>
+          <p>以 qBittorrent 4.6.2 为例，Windows 与 Linux 操作路径基本一致。</p>
+        </div>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <h3>复制磁力并检查信息哈希</h3>
+          <p>磁力链接里 <code>btih:</code> 后 40 位是 info hash。先和条目页给出的哈希前 12 位对齐，防止复制到被篡改的链接。</p>
+        </article>
+        <article class="step">
+          <h3>在下载器里看节点质量</h3>
+          <p>添加后看“种子/用户”栏，做种低于 5 时先别急着开始全部文件，可只勾选主视频文件试连。</p>
+        </article>
+        <article class="step">
+          <h3>设置限速与磁盘预留</h3>
+          <p>22GB 以上的条目建议预留 1.2 倍空间给临时文件。上传限速不低于 200KB/s，过低的分享率会被部分 tracker 限流。</p>
+        </article>
+        <article class="step">
+          <h3>完成后校验与做种</h3>
+          <p>右键“强制校验”对比 SHA-1，通过后再决定是否继续做种。长期做种建议把文件移到独立硬盘，避免被清理。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq" aria-labelledby="faqTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">FAQ</span>
+          <h2 id="faqTitle">新用户最常问的 8 个问题</h2>
+          <p>答案聚焦操作层面，不涉及站点评价。</p>
+        </div>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>磁力链接和 .torrent 文件有什么区别？</summary>
+          <p class="faq-a">磁力链接只带 info hash 和少量参数，靠 DHT 网络找节点；.torrent 文件自带完整文件树与 tracker 列表，离线也能看内容。前者省事，后者在网络受限时更可靠。大体积条目建议两者都留一份。</p>
+        </details>
+        <details>
+          <summary>做种数为 0 的条目还有必要下吗？</summary>
+          <p class="faq-a">做种数为 0 有两种情况：要么确实没人做种，要么 tracker 还没更新。可以先挂 30 分钟看是否出现节点。11 月 5 日下架的 31 条里，有 26 条是挂满 72 小时仍无响应的，这类基本可以放弃。</p>
+        </details>
+        <details>
+          <summary>为什么同一个种子在不同软件里速度差很多？</summary>
+          <p class="faq-a">差异来自连接数上限和 DHT 实现。qBittorrent 默认连接数 500，Transmission 默认 200；在节点少的条目上，前者更容易连上冷门用户。另外部分软件对 UDP tracker 支持不完整，会漏掉一批节点。</p>
+        </details>
+        <details>
+          <summary>校验值怎么用？</summary>
+          <p class="faq-a">下载完成后对指定文件计算 SHA-1 或 SHA-256，与条目页给出的前 16 位比对。不一致说明分卷损坏或被替换，需要重新下载对应文件块。站内 27 条大体积条目附了校验值，集中在软件镜像与 4K 影视。</p>
+        </details>
+        <details>
+          <summary>DHT 节点存活率 68% 是什么概念？</summary>
+          <p class="faq-a">11 月 6 日从 3 台不同网络环境的机器各采样 1 小时，能返回有效响应的节点数除以尝试连接数。68% 属于中等偏上水平，7 月同口径为 51%。这个数字反映网络连通性，不代表单条资源可用。</p>
+        </details>
+        <details>
+          <summary>下载到 99% 卡住怎么办？</summary>
+          <p class="faq-a">先看缺的是哪个文件块，在下载器里取消勾选非必要文件（样片、字幕包常见）。若仍卡住，更换 tracker 列表或导入其他来源的同哈希种子补块。22GB 的影视条目出现这种情况，多半是最后一个分卷无人做种。</p>
+        </details>
+        <details>
+          <summary>公开课录像为什么常分卷？</summary>
+          <p class="faq-a">按周或按章节分卷能降低单次下载失败的成本。北大《操作系统》48 讲分成 12 卷，单卷 1.2GB，前三卷做种多、后九卷少。可以先下前三卷确认画质与字幕，再决定是否补齐。</p>
+        </details>
+        <details>
+          <summary>下载速度慢是资源问题还是网络问题？</summary>
+          <p class="faq-a">先看下载器里显示的“种子/用户”数字。做种多但速度低，多半是本地上行带宽或运营商限速；做种少且速度低，是资源侧问题，挂机等待通常能改善。两者可用同一时段对比两条不同种子来区分。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评论 -->
+  <section class="block" id="comments" aria-labelledby="cmtTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">User Voices</span>
+          <h2 id="cmtTitle">站内讨论区的 6 条真实反馈</h2>
+          <p>节选自 11 月 1 日至 6 日的条目讨论，保留原意，删去无关字符。</p>
+        </div>
+      </div>
+      <div class="comments">
+        <article class="cmt">
+          <div class="cmt-head"><span class="avatar">林</span><b>hz_lin</b><span>11-06</span></div>
+          <p>《沙丘：第二部》22.4GB 那条，昨晚 11 点挂上，天亮前下完，平均 3.2MB/s。内封字幕轨用 PotPlayer 直接认出来了，不用再找字幕。</p>
+          <span class="to">指向：沙丘第二部 2160p 条目</span>
+        </article>
+        <article class="cmt">
+          <div class="cmt-head"><span class="avatar">周</span><b>zhou_1987</b><span>11-05</span></div>
+          <p>Ubuntu 那条 SHA-256 我核过，和官网一致。就是 tracker 里有个 UDP 节点一直超时，手动删掉后快了不少。</p>
+          <span class="to">指向：Ubuntu 24.04.1 镜像</span>
+        </article>
+        <article class="cmt">
+          <div class="cmt-head"><span class="avatar">阿</span><b>阿澈</b><span>11-05</span></div>
+          <p>公开课后九卷是真的难下，挂了两天只到 62%。分卷策略对收藏党不友好，但也能理解，单卷小一点失败了不心疼。</p>
+          <span class="to">指向：北大操作系统课合集</span>
+        </article>
+        <article class="cmt">
+          <div class="cmt-head"><span class="avatar">树</span><b>树洞不说话</b><span>11-04</span></div>
+          <p>做种数这个事，站里写的和实际能连上的差挺多。昨天看到一条标 40 多，实际连上 6 个，下得慢。希望详情页把 DHT 的数也放出来。</p>
+          <span class="to">指向：做种数统计口径</span>
+        </article>
+        <article class="cmt">
+          <div class="cmt-head"><span class="avatar">K</span><b>Kael_22</b><span>11-03</span></div>
+          <p>qBittorrent 4.6.2 装上后旧配置能直接导入，这点不错。安装时那个“发送匿名统计”默认勾选，记得手动取消。</p>
+          <span class="to">指向：qBittorrent 4.6.2 条目</span>
+        </article>
+        <article class="cmt">
+          <div class="cmt-head"><span class="avatar">陈</span><b>chen_web</b><span>11-02</span></div>
+          <p>《计算机网络》那本扫描版清晰度一般，第 3 章有几页歪了。文字层倒是有，搜索关键词能定位，凑合能用。</p>
+          <span class="to">指向：计算机网络第 8 版扫描</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 相关资讯 -->
+  <section class="block" id="news" aria-labelledby="newsTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">News</span>
+          <h2 id="newsTitle">11 月第一周的生态变动</h2>
+          <p>每条只讲一个事实变动，不重复更新列表。</p>
+        </div>
+      </div>
+      <div class="news-grid">
+        <article class="news-item">
+          <div class="news-date"><b>06</b><span>11月</span></div>
+          <div>
+            <h3>两家公共 tracker 停止响应</h3>
+            <p>10 月 30 日起，openbt 和 trackx 两个 UDP tracker 连续 7 天无响应，站内已从 214 条记录中移除。影响集中在 9 月批量导入的旧条目。</p>
+          </div>
+        </article>
+        <article class="news-item">
+          <div class="news-date"><b>05</b><span>11月</span></div>
+          <div>
+            <h3>qBittorrent 发布 4.6.2 正式版</h3>
+            <p>修复了 4.6.1 在 Windows 下偶发的内存泄漏，安装包 34MB。官网提供 SHA-256，站内条目已同步该校验值。</p>
+          </div>
+        </article>
+        <article class="news-item">
+          <div class="news-date"><b>03</b><span>11月</span></div>
+          <div>
+            <h3>低做种预警标签上线</h3>
+            <p>做种低于 3 的条目在列表页直接标红，覆盖 412 条记录。标签依据 tracker 回传数，24 小时刷新一次。</p>
+          </div>
+        </article>
+        <article class="news-item">
+          <div class="news-date"><b>01</b><span>11月</span></div>
+          <div>
+            <h3>《地球脉动 III》1080p 合集补源</h3>
+            <p>原发布者停止做种 14 天后，由用户 <em>nature_keep</em> 重新提供 8 集完整文件，做种数从 2 回到 21。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 榜单与可信度分层 -->
+  <section class="block" id="rank" aria-labelledby="rankTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Ranking &amp; Trust</span>
+          <h2 id="rankTitle">本周下载榜与条目可信度分层</h2>
+          <p>榜单按 11 月 1 日至 6 日实际连接数排序，不是点击数。</p>
+        </div>
+      </div>
+      <div class="rank">
+        <ol class="rank-list">
+          <li><span class="no">1</span><span class="rt"><b>沙丘：第二部</b> 2160p HDR 内封字幕</span><span class="rv">1,842 连</span></li>
+          <li><span class="no">2</span><span class="rt"><b>Ubuntu 24.04.1</b> 桌面版 ISO</span><span class="rv">1,406 连</span></li>
+          <li><span class="no">3</span><span class="rt"><b>qBittorrent 4.6.2</b> Windows x64</span><span class="rv">1,127 连</span></li>
+          <li><span class="no">4</span><span class="rt"><b>地球脉动 III</b> 1080p 全 8 集</span><span class="rv">963 连</span></li>
+          <li><span class="no">5</span><span class="rt"><b>北大《操作系统》</b> 48 讲前三卷</span><span class="rv">714 连</span></li>
+          <li><span class="no">6</span><span class="rt"><b>计算机网络第 8 版</b> 扫描 PDF</span><span class="rv">508 连</span></li>
+        </ol>
+        <aside class="note-box" aria-label="可信度分层说明">
+          <h3>三层可信度怎么分</h3>
+          <p>按来源可追溯程度分为三层，不评价内容本身的价值。</p>
+          <div class="trust">
+            <span class="t-high">高：官方源 + 哈希校验</span>
+            <span class="t-mid">中：有发布者署名，无校验</span>
+            <span class="t-low">低：来源不明，仅磁力</span>
+          </div>
+          <p style="margin-top:12px">当前在档记录中，高 27 条、中 1,104 条、低 3,087 条。分层每周一更新，11 月 3 日的分层结果已生效。</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 相关推荐 -->
+  <section class="block" id="related" aria-labelledby="relTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Related</span>
+          <h2 id="relTitle">顺着这些词再找一层</h2>
+          <p>标签均来自站内搜索联想与条目关键词。</p>
+        </div>
+      </div>
+      <div class="tag-cloud">
+        <a href="/#picks">4K HDR 蓝光原盘</a>
+        <a href="/#picks">内封中字 磁力</a>
+        <a href="/#guide">qBittorrent 限速设置</a>
+        <a href="/#deep">DHT 节点存活率</a>
+        <a href="/#guide">磁力链接 info hash 校验</a>
+        <a href="/#picks">Linux 镜像种子</a>
+        <a href="/#picks">公开课录像合集</a>
+        <a href="/#guide">分卷种子补块方法</a>
+        <a href="/#picks">纪录片 1080p</a>
+        <a href="/#deep">tracker 回传与嗅探差异</a>
+        <a href="/#picks">扫描版电子书 PDF</a>
+        <a href="/#rank">低做种预警条目</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="search-result" id="searchResult" role="status" aria-live="polite"></div></div>
+</main>
+
+<footer class="foot" id="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2c5a46"/>
+            <path d="M17 44V21l9.5 13L34 21l9 23" stroke="#f2c14e" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="47" cy="19" r="4.5" fill="#f2c14e"/>
+            <path d="M14 50h36" stroke="#4e8168" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span>蚂蚁bt联盟</span>
+        </div>
+        <p>做磁力与种子条目的归档整理，附做种观察与校验记录，帮人少下几次坏档。</p>
+        <p class="foot-data">站内条目为示例数据，用于展示索引结构；下载行为请遵守当地版权法规。</p>
+      </div>
+      <div>
+        <h3>内容频道</h3>
+        <ul>
+          <li><a href="/#picks">4K HDR 影视</a></li>
+          <li><a href="/#picks">美剧合集</a></li>
+          <li><a href="/#picks">纪录片</a></li>
+          <li><a href="/#picks">公开课录像</a></li>
+          <li><a href="/#picks">电子书扫描版</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>工具与规则</h3>
+        <ul>
+          <li><a href="/#guide">qBittorrent 配置</a></li>
+          <li><a href="/#deep">DHT 与 tracker 说明</a></li>
+          <li><a href="/#guide">磁力链接校验</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+          <li><a href="/#rank">可信度分层</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>参与</h3>
+        <ul>
+          <li><a href="/#updates">更新记录</a></li>
+          <li><a href="/#comments">讨论区反馈</a></li>
+          <li><a href="/#news">生态资讯</a></li>
+          <li><a href="/#related">标签索引</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 蚂蚁bt联盟 · 索引整理与做种观察</span>
+      <span>最近核对更新时间：<b>2026-11-08</b>，对应正文“最新更新”与“相关资讯”两条记录。</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var menuBtn=document.getElementById('menuBtn');
+  var nav=document.getElementById('mainNav');
+  if(menuBtn&&nav){
+    menuBtn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=1024){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+  document.querySelectorAll('a[href^="/#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href').slice(2);
+      var target=document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+        history.replaceState(null,'','#'+id);
+      }
+    });
+  });
+  var toTop=document.getElementById('toTop');
+  function onScroll(){
+    if(window.scrollY>480){toTop.classList.add('show');}else{toTop.classList.remove('show');}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+  toTop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  var result=document.getElementById('searchResult');
+  var form=document.getElementById('searchForm');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var q=document.getElementById('q').value.trim();
+      if(!q){result.classList.remove('show');result.innerHTML='';return;}
+      var nodes=document.querySelectorAll('main h2, main h3, main .update-list li, main .tag-cloud a, main .cat-chip');
+      var hits=[];
+      nodes.forEach(function(n){
+        if(n.textContent.indexOf(q)>-1&&hits.length<6){
+          var label=n.textContent.trim().replace(/\s+/g,' ').slice(0,50);
+          var id=n.closest('section');
+          hits.push({label:label,id:id?id.id:''});
+        }
+      });
+      result.classList.add('show');
+      if(hits.length===0){
+        result.innerHTML='没有找到与“<b>'+q.replace(/[<>&]/g,'')+'</b>”匹配的条目。试试“蓝光”“Ubuntu”“做种”或“DHT”。';
+      }else{
+        var html='找到 '+hits.length+' 处与“<b>'+q.replace(/[<>&]/g,'')+'</b>”相关的条目：';
+        html+='<ul style="margin:8px 0 0;padding-left:1.1em">';
+        hits.forEach(function(h){
+          html+='<li>'+h.label+(h.id?' → <a href="/#'+h.id+'">跳到该栏目</a>':'')+'</li>';
+        });
+        html+='</ul>';
+        result.innerHTML=html;
+      }
+    });
+  }
+
+  var sideLinks=document.querySelectorAll('.side-nav a');
+  var deep=document.getElementById('deep');
+  if(sideLinks.length&&deep){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          sideLinks.forEach(function(l){l.classList.remove('active');});
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    deep.querySelectorAll('h3').forEach(function(h){io.observe(h);});
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"蚂蚁bt联盟",
+  "description":"磁力链接与BT种子资源索引，按月归档影视、软件、公开课等种子条目，附做种观察与校验记录。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"磁力链接和 .torrent 文件有什么区别？","acceptedAnswer":{"@type":"Answer","text":"磁力链接只带 info hash 和少量参数，靠 DHT 网络找节点；.torrent 文件自带完整文件树与 tracker 列表，离线也能看内容。前者省事，后者在网络受限时更可靠。"}},
+    {"@type":"Question","name":"做种数为 0 的条目还有必要下吗？","acceptedAnswer":{"@type":"Answer","text":"做种数为 0 有两种情况：要么确实没人做种，要么 tracker 还没更新。可以先挂 30 分钟看是否出现节点。连续 72 小时仍无响应的基本可以放弃。"}},
+    {"@type":"Question","name":"为什么同一个种子在不同软件里速度差很多？","acceptedAnswer":{"@type":"Answer","text":"差异来自连接数上限和 DHT 实现。qBittorrent 默认连接数 500，Transmission 默认 200；在节点少的条目上，前者更容易连上冷门用户。"}},
+    {"@type":"Question","name":"DHT 节点存活率 68% 是什么概念？","acceptedAnswer":{"@type":"Answer","text":"11 月 6 日从 3 台不同网络环境的机器各采样 1 小时，能返回有效响应的节点数除以尝试连接数。68% 属于中等偏上水平，反映网络连通性，不代表单条资源可用。"}},
+    {"@type":"Question","name":"下载到 99% 卡住怎么办？","acceptedAnswer":{"@type":"Answer","text":"先看缺的是哪个文件块，在下载器里取消勾选非必要文件（样片、字幕包常见）。若仍卡住，更换 tracker 列表或导入其他来源的同哈希种子补块。"}}
+  ]
+}
+</script>
+</body>
+  </html>
